@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import './css/App.css';
+import Header from './components/Header';
+import React, {Component} from 'react';
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import Container from '@material-ui/core/Container';
+import PopularStocks from './components/PopularStocks';
+import WebFont from 'webfontloader';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+WebFont.load({
+  google: {
+    families: ['Roboto', 'Lato']
+  }
+});
+
+
+class StocksApp extends Component {
+
+
+  
+  render() {
+    return (
+      <Router>
+        <Header />
+        <Container spacing={3} fixed>
+        <PopularStocks />
+        </Container>
+      </Router>
+    );
+  }
 }
 
+
+
+function App(){
+
+    return(
+        <StocksApp />
+    )
+}
+
+
+
 export default App;
+
+

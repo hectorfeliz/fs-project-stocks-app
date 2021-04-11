@@ -1,0 +1,62 @@
+.stock {
+  -webkit-transition: background-color 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.stock:hover .stock_inner, .stock:focus .stock_inner, .stock:active .stock_inner {
+  border: 2px solid #000;
+}
+
+.stock .stock_inner {
+  padding: 14px !important;
+  position: relative;
+  border: 2px solid #fff;
+  -webkit-transition: border 0.6s ease-in-out;
+  transition: border 0.6s ease-in-out;
+}
+
+.stock .stock_inner .stock__change.negative {
+  background-color: #FF0000;
+}
+
+.stock .stock_inner .stock__change.positive {
+  background-color: #00D100;
+}
+
+.stock .stock_inner .stock__exchange {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+.stock .stock_inner .stock__price sup {
+  font-size: 12px;
+}
+
+.stock .stock_inner .stock__price .stock__change {
+  margin-left: 10px;
+  border-radius: 4px;
+  height: 25px;
+}
+
+.stock .stock_inner .stock__price .stock__change .MuiChip-label {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.stock .stock_inner .stock__price .stock__change .MuiChip-icon {
+  height: 16px;
+  width: 16px;
+}
+
+.stock .stock_inner .stock__symbol {
+  font-weight: 700;
+  margin-bottom: 0px;
+}
+
+.stock .stock_inner .stock__name {
+  font-size: 13px;
+  font-weight: 500;
+}
+/*# sourceMappingURL=Stock.css.map */

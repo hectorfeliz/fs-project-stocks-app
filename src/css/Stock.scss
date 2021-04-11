@@ -1,0 +1,74 @@
+.stock{
+    transition: background-color 0.3s ease-in-out;
+    cursor: pointer;
+
+    &:hover, &:focus, &:active{
+        .stock_inner{
+            border: 2px solid #000;
+        }
+    }
+
+    .stock_inner{
+        padding: 14px !important;
+        position: relative;
+        border: 2px solid #fff;
+        transition: border 0.6s ease-in-out;
+        &.negative{
+          //@debug  border-color: #FF0000;
+        }
+        &.positive{
+            //border-color: #00D100;
+        }
+
+        .stock__change{
+            &.negative{
+                background-color: #FF0000;
+            }
+            &.positive{
+                background-color: #00D100;
+            }
+        }
+
+        .stock__exchange{
+
+            position: absolute;
+            top: 16px;
+            right: 16px;
+           
+        }
+
+        .stock__price{
+    
+            sup{
+                font-size: 12px;
+            }
+
+            .stock__change{
+                margin-left: 10px;
+                border-radius: 4px;
+                height: 25px;
+                .MuiChip-label{
+                    font-size: 16px;
+                    line-height: 1;
+                }
+                .MuiChip-icon{
+                    height: 16px;
+                    width: 16px;
+                }
+            }
+        }
+
+
+        .stock__symbol{
+            font-weight: 700;
+            margin-bottom: 0px;
+        }
+
+        .stock__name{
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+    
+    }
+}
