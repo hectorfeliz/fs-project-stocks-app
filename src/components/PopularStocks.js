@@ -248,21 +248,6 @@ function PopularStocks() {
         }
     ]);
 
-    const fetchPopular = async () => {
-        const response = await fetch('https://pokeapi.co/api/v2/pokemon/?limit=100');
-        if(response.ok){
-
-            const data = await response.json();
-            console.log(data);
-            setPopular(data.results);
-
-        }else{
-            console.log('bad response');
-        }
-    }
-
-   
-    console.log(popular);
 
 
     return (

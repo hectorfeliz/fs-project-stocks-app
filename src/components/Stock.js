@@ -13,6 +13,8 @@ import Chip from '@material-ui/core/Chip';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 
+import StockDrawer from './StockDrawer';
+
 import '../css/Stock.css';
 
 var formatter = new Intl.NumberFormat('en-US', {
@@ -59,21 +61,17 @@ function Stock({symbol, exchange, name, price, change, currency}) {
             
             const toggleDrawer = (anchor, open) => (event) => {
                 
-                console.log('TOGGLE');
                 
                 if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
                   return;
                 }
-
-                console.log(anchor);
-                console.log(open);
 
                 setState({ ...state, [anchor]: open });
             };
             
         return (
         <Grid item xs={12} sm={6} md={4} lg={3} >
-            
+
             <React.Fragment key={targetIdentifier}>
                 <Card color="#fff" className={`stock ${classes.root}`}
                         key={targetIdentifier}
@@ -103,22 +101,17 @@ function Stock({symbol, exchange, name, price, change, currency}) {
                 </Card>
 
                 <SwipeableDrawer
+                className="stock__drawer__container"
                 anchor="bottom"
                 open={state[targetIdentifier]}
                 onClose={toggleDrawer(targetIdentifier, false)}
                 onOpen={toggleDrawer(targetIdentifier, true)} >
            
-                    <Typography className="stock__exchange" variant="p" component="strong">
-                        {exchange}
-                    </Typography>
-                    
-                    <Typography className="stock__name" variant="p" component="p">
-                        {name}
-                    </Typography>
-
-                    <Typography className="stock__symbol" color="#fff" gutterBottom variant="h3" component="div"> 
-                        {symbol}
-                    </Typography>
+                <StockDrawer 
+                 symbol={symbol}
+                 name={name}
+                 exchange={exchange}
+                />
 
             </SwipeableDrawer>
             </React.Fragment>

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAEI,yBAFqB,CAErB,OAAO,CAAA;EACH,gBAAgB,EAAE,OAAO;EACzB,UAAU,EAAE,cAAc;CAK7B;;AATL,AAMQ,yBANiB,CAErB,OAAO,CAIH,cAAc,CAAA;EACV,UAAU,EAAE,IAAI;CACnB",
+    "sources": [
+        "StockDrawer.scss"
+    ],
+    "names": [],
+    "file": "StockDrawer.css"
+}
