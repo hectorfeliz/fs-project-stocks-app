@@ -20,7 +20,16 @@ function PopularStocks() {
             "volume":"877550725",
             "previous_close":"4097.22021",
             "change":"30.53955",
-            "percent_change":"0.74537"
+            "percent_change":"0.74537",
+            "fifty_two_week":{
+                "low":"2455.79004",
+                "high":"4189.99023",
+                "low_change":"1733.93994",
+                "high_change":"-0.26025",
+                "low_change_percent":"70.60620",
+                "high_change_percent":"-0.00621",
+                "range":"2455.790039 - 4189.990234"  
+            }
         },
         {
             "symbol":"AMZN",
@@ -37,6 +46,15 @@ function PopularStocks() {
             "change":"72.89990",
             "percent_change":"2.20956",
             "average_volume":"3028596",
+            "fifty_two_week":{
+                "low":"1889.15002",
+                "high":"3552.25000",
+                "low_change":"1510.28992",
+                "high_change":"-152.81006",
+                "low_change_percent":"79.94547",
+                "high_change_percent":"-4.30178",
+                "range":"1889.150024 - 3552.250000",
+            }
         },
         {
             "symbol":"AAPL",
@@ -53,6 +71,15 @@ function PopularStocks() {
             "change":"2.64000",
             "percent_change":"2.02516",
             "average_volume":"89743153", 
+            "fifty_two_week":{
+                "low":"1889.15002",
+                "high":"3552.25000",
+                "low_change":"1510.28992",
+                "high_change":"-152.81006",
+                "low_change_percent":"79.94547",
+                "high_change_percent":"-4.30178",
+                "range":"1889.150024 - 3552.250000",
+            }
                
         },
         {
@@ -68,7 +95,16 @@ function PopularStocks() {
             "previous_close":"253.25000",
             "change":"2.60001",
             "percent_change":"1.02666",
-            "average_volume":"27234761"
+            "average_volume":"27234761",
+            "fifty_two_week":{
+                "low":"1889.15002",
+                "high":"3552.25000",
+                "low_change":"1510.28992",
+                "high_change":"-152.81006",
+                "low_change_percent":"79.94547",
+                "high_change_percent":"-4.30178",
+                "range":"1889.150024 - 3552.250000",
+            }
         },
         {
             "symbol":"FB",
@@ -84,7 +120,16 @@ function PopularStocks() {
             "previous_close":"313.01999",
             "change":"-0.56000",
             "percent_change":"-0.17890",
-            "average_volume":"19561510"
+            "average_volume":"19561510",
+            "fifty_two_week":{
+                "low":"1889.15002",
+                "high":"3552.25000",
+                "low_change":"1510.28992",
+                "high_change":"-152.81006",
+                "low_change_percent":"79.94547",
+                "high_change_percent":"-4.30178",
+                "range":"1889.150024 - 3552.250000",
+            }
         },
         {
             "symbol":"GOOGL",
@@ -100,7 +145,16 @@ function PopularStocks() {
             "previous_close":"2250.42993",
             "change":"20.23999",
             "percent_change":"0.89938",
-            "average_volume":"1598654"
+            "average_volume":"1598654",
+            "fifty_two_week":{
+                "low":"1889.15002",
+                "high":"3552.25000",
+                "low_change":"1510.28992",
+                "high_change":"-152.81006",
+                "low_change_percent":"79.94547",
+                "high_change_percent":"-4.30178",
+                "range":"1889.150024 - 3552.250000",
+            }
         },
         {
             "symbol":"TSLA",
@@ -116,7 +170,16 @@ function PopularStocks() {
             "previous_close":"683.79999",
             "change":"-6.77997",
             "percent_change":"-0.99151",
-            "average_volume":"31010011"
+            "average_volume":"31010011",
+            "fifty_two_week":{
+                "low":"1889.15002",
+                "high":"3552.25000",
+                "low_change":"1510.28992",
+                "high_change":"-152.81006",
+                "low_change_percent":"79.94547",
+                "high_change_percent":"-4.30178",
+                "range":"1889.150024 - 3552.250000",
+            }
         },
         {
             "symbol":"BRK.B",
@@ -132,7 +195,16 @@ function PopularStocks() {
             "previous_close":"263.51001",
             "change":"2.50000",
             "percent_change":"0.94873",
-            "average_volume":"4749541"
+            "average_volume":"4749541",
+            "fifty_two_week":{
+                "low":"1889.15002",
+                "high":"3552.25000",
+                "low_change":"1510.28992",
+                "high_change":"-152.81006",
+                "low_change_percent":"79.94547",
+                "high_change_percent":"-4.30178",
+                "range":"1889.150024 - 3552.250000",
+            }
         },
         {
             "symbol":"JPM",
@@ -148,7 +220,16 @@ function PopularStocks() {
             "previous_close":"155.12000",
             "change":"1.16000",
             "percent_change":"0.74781",
-            "average_volume":"14650092"
+            "average_volume":"14650092",
+            "fifty_two_week":{
+                "low":"1889.15002",
+                "high":"3552.25000",
+                "low_change":"1510.28992",
+                "high_change":"-152.81006",
+                "low_change_percent":"79.94547",
+                "high_change_percent":"-4.30178",
+                "range":"1889.150024 - 3552.250000",
+            }
         },
         {
             "symbol":"V",
@@ -164,7 +245,16 @@ function PopularStocks() {
             "previous_close":"220.70000",
             "change":"1.82001",
             "percent_change":"0.82465",
-            "average_volume":"7794596"
+            "average_volume":"7794596",
+            "fifty_two_week":{
+                "low":"1889.15002",
+                "high":"3552.25000",
+                "low_change":"1510.28992",
+                "high_change":"-152.81006",
+                "low_change_percent":"79.94547",
+                "high_change_percent":"-4.30178",
+                "range":"1889.150024 - 3552.250000",
+            }
         },
         {
             "symbol":"DJI",
@@ -180,7 +270,16 @@ function PopularStocks() {
             "previous_close":"33504.03125",
             "change":"290.30859",
             "percent_change":"0.86649",
-            "average_volume":"328483138"
+            "average_volume":"328483138",
+            "fifty_two_week":{
+                "low":"1889.15002",
+                "high":"3552.25000",
+                "low_change":"1510.28992",
+                "high_change":"-152.81006",
+                "low_change_percent":"79.94547",
+                "high_change_percent":"-4.30178",
+                "range":"1889.150024 - 3552.250000",
+            }
         },
         {
             "symbol":"GLD",
@@ -196,7 +295,16 @@ function PopularStocks() {
             "previous_close":"164.50999",
             "change":"-1.22000",
             "percent_change":"-0.74160",
-            "average_volume":"6600242" 
+            "average_volume":"6600242",
+            "fifty_two_week":{
+                "low":"1889.15002",
+                "high":"3552.25000",
+                "low_change":"1510.28992",
+                "high_change":"-152.81006",
+                "low_change_percent":"79.94547",
+                "high_change_percent":"-4.30178",
+                "range":"1889.150024 - 3552.250000",
+            }
         },
         {
             "symbol":"GE",
@@ -212,7 +320,16 @@ function PopularStocks() {
             "previous_close":"13.45000",
             "change":"0.15000",
             "percent_change":"1.11525",
-            "average_volume":"53486550"
+            "average_volume":"53486550",
+            "fifty_two_week":{
+                "low":"1889.15002",
+                "high":"3552.25000",
+                "low_change":"1510.28992",
+                "high_change":"-152.81006",
+                "low_change_percent":"79.94547",
+                "high_change_percent":"-4.30178",
+                "range":"1889.150024 - 3552.250000",
+            }
         },
         {
             "symbol":"IXIC",
@@ -228,7 +345,16 @@ function PopularStocks() {
             "previous_close":"13829.19434",
             "change":"65.91016",
             "percent_change":"0.47660",
-            "average_volume":"12066501594"
+            "average_volume":"12066501594",
+            "fifty_two_week":{
+                "low":"1889.15002",
+                "high":"3552.25000",
+                "low_change":"1510.28992",
+                "high_change":"-152.81006",
+                "low_change_percent":"79.94547",
+                "high_change_percent":"-4.30178",
+                "range":"1889.150024 - 3552.250000",
+            }
         },
         {
             "symbol":"SHOP",
@@ -245,6 +371,15 @@ function PopularStocks() {
             "change":"4.61011",
             "percent_change":"0.37705",
             "average_volume":"325161651",
+            "fifty_two_week":{
+                "low":"1889.15002",
+                "high":"3552.25000",
+                "low_change":"1510.28992",
+                "high_change":"-152.81006",
+                "low_change_percent":"79.94547",
+                "high_change_percent":"-4.30178",
+                "range":"1889.150024 - 3552.250000",
+            }
         }
     ]);
 
@@ -275,6 +410,7 @@ function PopularStocks() {
                             price={stock.close}
                             currency={stock.currency}
                             change={stock.percent_change}
+                            details={stock}
                             />
                         )
 

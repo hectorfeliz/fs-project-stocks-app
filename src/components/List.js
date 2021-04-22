@@ -12,16 +12,11 @@ function List(){
 
     const [posts,setPosts] = useState([
         {
-            "1. symbol": "APLE",
-            "2. name": "Apple Hospitality REIT Inc",
-            "3. type": "Equity",
-            "4. region": "United States",
-            "5. marketOpen": "09:30",
-            "6. marketClose": "16:00",
-            "7. timezone": "UTC-04",
-            "8. currency": "USD",
-            "9. matchScore": "0.8889"
-          },
+            name: "Hello", 
+        },
+        {
+            name: "world", 
+        }
     ]);
 
     const fetchPokes = async () => {

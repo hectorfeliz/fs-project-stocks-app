@@ -47,13 +47,13 @@ const useStyles = makeStyles({
  
 
 
-function Stock({symbol, exchange, name, price, change, currency}) {
+function Stock({symbol, exchange, name, price, change, currency, details}) {
     const classes = useStyles(),
           targetIdentifier = symbol.replace(/\s+/g, '-').toLowerCase() + '-' + exchange.replace(/\s+/g, '-').toLowerCase(),
           changeClass  = (parseFloat(change) > 0) ? 'negative' : 'positive',
           changeElement  = (parseFloat(change) > 0)
-            ? <Chip className="stock__change negative" color="negative" label={`${parseFloat(change).toFixed(3)}`} icon={<ArrowUpwardIcon />} /> 
-            : <Chip className="stock__change positive" color="positive" label={`${parseFloat(change).toFixed(3)}`} icon={<ArrowDownwardIcon />} />;
+            ? <Chip className="stock__change positive" color="positive" label={`${parseFloat(change).toFixed(3)}`} icon={<ArrowUpwardIcon />} /> 
+            : <Chip className="stock__change negative" color="negative" label={`${parseFloat(change).toFixed(3)}`} icon={<ArrowDownwardIcon />} />;
 
             const [state, setState] = useState({
                 targetIdentifier: false,
@@ -80,7 +80,7 @@ function Stock({symbol, exchange, name, price, change, currency}) {
                 
                     <CardContent className={`${changeClass} stock_inner`}>
 
-                        <Typography className="stock__exchange" variant="p" component="strong">
+                        <Typography className="stock__exchange" variant="p" component="p">
                             {exchange}
                         </Typography>
                         
@@ -108,9 +108,8 @@ function Stock({symbol, exchange, name, price, change, currency}) {
                 onOpen={toggleDrawer(targetIdentifier, true)} >
            
                 <StockDrawer 
-                 symbol={symbol}
-                 name={name}
-                 exchange={exchange}
+                 details={details}
+                 changeElement={changeElement}
                 />
 
             </SwipeableDrawer>

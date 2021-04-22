@@ -14,10 +14,10 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import appIcon from '../img/logo.svg';
+import '../css/Header.css';
 
-
-const StockIcon = require ('../img/global-online.svg');
-
+import Search from './Search';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -165,6 +165,7 @@ export default function Header() {
     </Menu>
   );
 
+
   return (
     <div className={classes.grow}>
         
@@ -173,24 +174,24 @@ export default function Header() {
           
         <Container spacing={3} fixed>
 
-       <Toolbar>
-          <img src={StockIcon} alt="App Logo" />
+       <Toolbar className="header" >
+          <img src={appIcon} className="header__logo" alt="App Logo" width="32" />
           <Typography className={classes.title} variant="h6" noWrap>
-         
-            Stocks App
+            Invest Trackr
           </Typography>
-          <div className={classes.search}>
+          <div className={`${classes.search} search__container`}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
+
+            <Search className="" classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
+              }} />
+            
+
+              
+
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>

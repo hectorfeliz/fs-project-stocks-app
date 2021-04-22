@@ -1,11 +1,135 @@
+@import 'Variables';
+
 .stock__drawer__container{
 
     .drawer{
-        background-color: #1A3453;
-        border-top: 3px solid #fff;
+        background-color: $white;
+        border-top: 10px solid $secondary;
 
         .drawer__inner{
-            min-height: 75vh;
+            min-height: calc(100vh - 74px);
+
+
+        
+            *{
+                color: $primary;
+            }
+
+            .drawer__header{
+
+                padding: 20px 0;
+                display: inline-block;
+                width: 100%;
+                display: flex;
+                align-items: center;
+
+                .stock__symbol{
+            
+                    line-height: 54px;
+                    margin: 0;
+                    font-weight: 700;
+                    margin-bottom: 0px;
+                    float: left;
+                    clear: left;
+
+                }
+
+                .stock__name{
+                    font-size: 16px;
+                    font-weight: 500;
+                    color: $gray;
+                }
+
+                .stock__exchange{
+            
+                    padding-left: 3px;
+                    font-weight: normal;
+                    font-size: 14px;
+                    clear: left;
+                    float: left;
+                    color: $gray;
+
+
+                }
+
+                .stock__price{
+                    line-height: 54px;
+                    margin-left: 48px;
+                    font-size: 35px;
+                    display: flex;
+                    align-items: center;
+                    font-weight: bold;
+
+                    small{
+                    line-height: 14px;
+                    font-size: 14px;
+                    color: $gray;
+                    align-self: baseline;
+                    }
+
+                    .stock__change {
+                        margin-left: 20px;
+                        line-height: 54px;
+                        color: #fff;
+                    
+                        *{
+                            color: #fff;
+                        }
+                    }
+
+
+                }
+
+                .stock__currency{
+
+                }
+
+                .stock__difference{
+
+                }
+
+
+                .stock__change{
+                    &.negative{
+                        background-color: #FF0000;
+                    }
+                    &.positive{
+                        background-color: #00D100;
+                    }
+                }
+    
+
+            }
+
+            .drawer__details__header{
+                margin-bottom: 10px;
+            }
+
+            .drawer__details{
+                
+                
+                .drawer__details__info{
+
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    
+
+                    .MuiListItemText-primary{
+
+                        font-size: 15px;
+                        line-height: 20px;
+                        font-weight: 700;
+                    }
+
+                    .MuiListItemText-secondary{
+                        font-size: 15px;
+                        line-height: 20px;
+                    }
+
+
+                }
+            }
         }
     }
 }

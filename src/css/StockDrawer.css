@@ -1,9 +1,129 @@
+body h1, body h2, body h3, body h4, body h5, body h6 {
+  font-family: Lato, Arial;
+  font-weight: bold;
+}
+
+body .paper {
+  background-color: #f0f0f0 !important;
+  padding: 0;
+}
+
+body .paper .MuiList-padding {
+  padding: 0;
+}
+
 .stock__drawer__container .drawer {
-  background-color: #1A3453;
-  border-top: 3px solid #fff;
+  background-color: #f6f6f6;
+  border-top: 10px solid #1A3453;
 }
 
 .stock__drawer__container .drawer .drawer__inner {
-  min-height: 75vh;
+  min-height: calc(100vh - 74px);
+}
+
+.stock__drawer__container .drawer .drawer__inner * {
+  color: #1D132D;
+}
+
+.stock__drawer__container .drawer .drawer__inner .drawer__header {
+  padding: 20px 0;
+  display: inline-block;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.stock__drawer__container .drawer .drawer__inner .drawer__header .stock__symbol {
+  line-height: 54px;
+  margin: 0;
+  font-weight: 700;
+  margin-bottom: 0px;
+  float: left;
+  clear: left;
+}
+
+.stock__drawer__container .drawer .drawer__inner .drawer__header .stock__name {
+  font-size: 16px;
+  font-weight: 500;
+  color: #73706e;
+}
+
+.stock__drawer__container .drawer .drawer__inner .drawer__header .stock__exchange {
+  padding-left: 3px;
+  font-weight: normal;
+  font-size: 14px;
+  clear: left;
+  float: left;
+  color: #73706e;
+}
+
+.stock__drawer__container .drawer .drawer__inner .drawer__header .stock__price {
+  line-height: 54px;
+  margin-left: 48px;
+  font-size: 35px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: bold;
+}
+
+.stock__drawer__container .drawer .drawer__inner .drawer__header .stock__price small {
+  line-height: 14px;
+  font-size: 14px;
+  color: #73706e;
+  -ms-flex-item-align: baseline;
+      align-self: baseline;
+}
+
+.stock__drawer__container .drawer .drawer__inner .drawer__header .stock__price .stock__change {
+  margin-left: 20px;
+  line-height: 54px;
+  color: #fff;
+}
+
+.stock__drawer__container .drawer .drawer__inner .drawer__header .stock__price .stock__change * {
+  color: #fff;
+}
+
+.stock__drawer__container .drawer .drawer__inner .drawer__header .stock__change.negative {
+  background-color: #FF0000;
+}
+
+.stock__drawer__container .drawer .drawer__inner .drawer__header .stock__change.positive {
+  background-color: #00D100;
+}
+
+.stock__drawer__container .drawer .drawer__inner .drawer__details__header {
+  margin-bottom: 10px;
+}
+
+.stock__drawer__container .drawer .drawer__inner .drawer__details .drawer__details__info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.stock__drawer__container .drawer .drawer__inner .drawer__details .drawer__details__info .MuiListItemText-primary {
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 700;
+}
+
+.stock__drawer__container .drawer .drawer__inner .drawer__details .drawer__details__info .MuiListItemText-secondary {
+  font-size: 15px;
+  line-height: 20px;
 }
 /*# sourceMappingURL=StockDrawer.css.map */

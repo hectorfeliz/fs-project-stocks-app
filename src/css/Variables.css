@@ -1,1 +1,14 @@
-/* No CSS *//*# sourceMappingURL=Variables.css.map */
+body h1, body h2, body h3, body h4, body h5, body h6 {
+  font-family: Lato, Arial;
+  font-weight: bold;
+}
+
+body .paper {
+  background-color: #f0f0f0 !important;
+  padding: 0;
+}
+
+body .paper .MuiList-padding {
+  padding: 0;
+}
+/*# sourceMappingURL=Variables.css.map */

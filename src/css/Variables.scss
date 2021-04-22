@@ -2,6 +2,27 @@
 $primary: #1D132D;
 $secondary: #1A3453;
 
-$white: #F5F3EC;
-$gray: #8491AC;
+
+$white: #f6f6f6;
+$paper: #f0f0f0;
+$gray: #73706e;
+
+
+body{
+    h1,h2,h3,h4,h5,h6{
+        font-family: Lato, Arial;
+        font-weight: bold;
+    
+      }
+    
+      .paper{
+        background-color: $paper !important;
+        padding: 0;
+        .MuiList-padding{
+            padding: 0;
+        }
+      }
+    
+}
+
 

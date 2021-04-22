@@ -19,12 +19,14 @@ class StocksApp extends Component {
   
   render() {
     return (
+      <div className="App">
       <Router>
         <Header />
         <Container spacing={3} fixed>
         <PopularStocks />
         </Container>
       </Router>
+      </div>
     );
   }
 }

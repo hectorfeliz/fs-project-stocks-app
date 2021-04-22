@@ -1,78 +1,18 @@
 @import 'Variables';
 
 .header{
-    height: 80px;
-    background-color: $white;
- 
-    .header__inner{
-   
-        height: 80px;
-        background-color: $white;
-        color: $primary;
-        position: sticky;
-        top: 0;
-        z-index: 100;
     
-
-        span, a, div{
-            color: $primary;
-        }
-
-        svg{
-            fill: $primary;
-        }
-      
-    
-        .header__logo{
-          
-        }
-
-        .header__search{
-          
-        }
-    
-        
-        .header__nav{
-        
-        }
-    
-    
-    
-        .header__searchIcon{
-            padding: 5px;
-            height: 22px;
-            background-color: #cd9042;
-        }
-    
-   
-        .header__searchInput{
-            height: 12px;
-            padding: 10px;
-            border: none;
-            width: 100%;
-            order: 0;
-            flex: 0 1 auto;
-            align-self: auto;
-
-        }
-    
-        .header__option{
-            display: flex;
-            flex-direction: column;
-            margin-left: 10px;
-            margin-right: 10px;
-    
-        
-        }
-    
-        .header__logo{
-    
-        }
-    
-    
-    
+    .header__logo{
+        margin: 0 10px;
     }
 
+    .search__container{
+        width: 100%;
+
+       .MuiInputBase-root, input{
+            width: 100%;
+        }
+    }
 
 }
 
