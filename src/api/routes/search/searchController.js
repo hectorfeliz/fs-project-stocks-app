@@ -1,41 +1,41 @@
-require('dotenv').config({
-	path: `${__dirname}/.env`
-});
+var unirest = require("unirest");
 
-const request = require('request'); 
-
-exports.getSymbolSearch = async (req, res, next) => {
-  try {
-    console.log('Query is...');
-    console.log(req);
+exports.getSymbolSearch = async (request) => {
+try {
 
 
-    const options = {
-        method: 'GET',
-        url: 'https://twelve-data1.p.rapidapi.com/symbol_search',
-        qs: {symbol: req.query, outputsize: '30'},
-        headers: {
-          'x-rapidapi-key': process.env.RAPID_API_KEY,
-          'x-rapidapi-host': 'twelve-data1.p.rapidapi.com',
-          useQueryString: true
-        }
-      };
-      
-      request(options, function (error, response, body) {
-          if (error) throw new Error(error);
-    
-          console.log('body..');
-          console.log(body);
-          return body;
-          
-       
-      });
+  var req = unirest("GET", "https://twelve-data1.p.rapidapi.com/symbol_search");
+
+  req.query({
+    "symbol": request.query,
+    "outputsize": "30"
+  });
+  
+  req.headers({
+    "x-rapidapi-key": "89c20ee19cmshb9b1a97ffa75f6bp13b9a9jsn1a1284be8d95",
+    "x-rapidapi-host": "twelve-data1.p.rapidapi.com",
+    "useQueryString": true
+  });
+  
+  const responseData = await req.end(function (res) {
+    if (res.error) throw new Error(res.error);
+   
+    console.log(res.body.data);
+    return res.body;
+  
+  });
+
+ // return responseData;
 
 
-    
-  } catch (err) {
-    throw err;
-  }
-};
+} catch (err) {
+  throw err;
+}
+}
+
+
+
+
+
 
 

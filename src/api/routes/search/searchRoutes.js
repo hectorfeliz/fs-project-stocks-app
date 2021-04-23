@@ -6,7 +6,7 @@ const router = express.Router();
   router.route('/').get(async (req, res) => {
 
     try {
-      const result = getSymbolSearch(req.query);
+      const result = await getSymbolSearch(req.query);
       res.json(result).send();
     } catch (err) {
       console.log(err);
