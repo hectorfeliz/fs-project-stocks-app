@@ -1,41 +1,32 @@
-var unirest = require("unirest");
 
-exports.getSymbolSearch = async (request) => {
+const fetch = require('node-fetch');
+
+exports.getSymbolSearch = async (req, res) => {
 try {
 
+  const options = {
+    method: 'GET',
+    url: 'https://twelve-data1.p.rapidapi.com/symbol_search?symbol='+req.query+'&outputsize=30',
+    headers: {
+      'x-rapidapi-key': process.env.RAPID_API_KEY,
+      'x-rapidapi-host': 'twelve-data1.p.rapidapi.com',
+      useQueryString: true
+    }
+  };
 
-  var req = unirest("GET", "https://twelve-data1.p.rapidapi.com/symbol_search");
+  const response = await fetch('https://twelve-data1.p.rapidapi.com/symbol_search',options);
+  // do something with the response
+  // return some information
 
-  req.query({
-    "symbol": request.query,
-    "outputsize": "30"
-  });
-  
-  req.headers({
-    "x-rapidapi-key": "89c20ee19cmshb9b1a97ffa75f6bp13b9a9jsn1a1284be8d95",
-    "x-rapidapi-host": "twelve-data1.p.rapidapi.com",
-    "useQueryString": true
-  });
-  
-  const responseData = await req.end(function (res) {
-    if (res.error) throw new Error(res.error);
-   
-    console.log(res.body.data);
-    return res.body;
-  
-  });
+  res.json(response).send();
 
- // return responseData;
+  console.log('repsonse is...');
+  console.log(response);
+  return response;
 
 
 } catch (err) {
   throw err;
 }
 }
-
-
-
-
-
-
 
