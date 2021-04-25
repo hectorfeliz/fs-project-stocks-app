@@ -1,13 +1,14 @@
 @import 'Variables';
 
 .header{
-    
+        
     .header__logo{
         margin: 0 10px;
     }
 
     .search__container{
-        width: 100%;
+        width: 40%;
+    
 
        .MuiInputBase-root, input{
             width: 100%;

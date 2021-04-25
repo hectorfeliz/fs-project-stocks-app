@@ -1,0 +1,41 @@
+.stock_list {
+  background-color: #fff !important;
+  padding: 0;
+  margin: 60px 0;
+}
+
+.stock_list > .MuiPaper-root {
+  background-color: #fff;
+}
+
+.stock_list > .MuiPaper-root .MuiIconButton-root {
+  color: #424242;
+  padding: 16px;
+  margin-right: 10px;
+}
+
+.stock_list > .MuiPaper-root .MuiAccordionDetails-root {
+  padding: 0;
+}
+
+.stock_list > .MuiPaper-root .MuiAccordionSummary-root {
+  padding: 0;
+}
+
+.stock_list > .MuiPaper-root .MuiAccordionSummary-content.Mui-expanded {
+  margin: 0;
+}
+
+.stock_list .stock_list__header {
+  padding: 16px;
+  color: #424242;
+}
+
+.stock_list .stock_list__header span {
+  color: #424242;
+}
+
+.stock_list .stock_list__content {
+  padding: 16px;
+}
+/*# sourceMappingURL=List.css.map */

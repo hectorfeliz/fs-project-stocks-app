@@ -1,21 +1,38 @@
 import { ThemeOptions } from '@material-ui/core/styles/createMuiTheme';
+import { createMuiTheme }  from '@material-ui/core/styles'
 
-export const themeOptions = {
+const theme = createMuiTheme({
+  typography: {
+    fontFamily: 'Lato, Arial',
+  },
   palette: {
-    type: 'light',
+    type: 'dark',
     primary: {
       main: '#1D132D',
       light: '#1A3453',
       dark: '#1D132D',
     },
     secondary: {
-      main: '#f50057',
+      main: '#ffffff',
     },
+    positive:{
+      main: "#00D100",
+      light: '#00D100',
+      dark: '#00D100',
+    },
+    negative:{
+      main: "#FF0000",
+      light: '#FF0000',
+      dark: '#FF0000',
+    },
+    background: {
+      default: "#e4f0e2"
+    }
   },
   overrides: {
     MuiAppBar: {
       colorInherit: {
-        backgroundColor: '#689f38',
+        backgroundColor: '#1D132D',
         color: '#fff',
       },
     },
@@ -24,8 +41,7 @@ export const themeOptions = {
     MuiAppBar: {
       color: 'inherit',
     },
-  },
-  shape: {
-    borderRadius: 4,
-  },
-};
+  }
+})
+
+export default theme;

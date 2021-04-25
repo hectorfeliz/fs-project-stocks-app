@@ -1,40 +1,50 @@
 import React, { useState, useEffect } from 'react';
 import Stock from './Stock';
 import InputBase from '@material-ui/core/InputBase';
+import { useDispatch } from 'react-redux';
+import getQuoteDetails from './StockDetails';
+import replace from '../actions';
 
-const axios = require('axios').default;
+
+export default function Search({classes, props})  {
 
 
-export default function Search({classes})  {
-
-  const [results, setResults ] = useState([]);
+  const dispatch = useDispatch();
 
   const search = async val => {
 
-    console.log('front end starting Search.. ');
-    console.log(val);
+    // performing Search
+    const response = await fetch('/api/search?symbol='+val, {
+      method: 'GET'
+    });
 
-    axios.get('http://localhost:8080/api/search?query='+val)
-      .then(function (response) {
-        // handle success
-        const stocks = response;
-        console.log('Response back from Backend is..');
+    const resp = await response.json();
 
-        console.log(stocks);
-        setResults(stocks); 
+    console.log(resp);
 
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      })
-      .then(function () {
-        // always executed
-      });
+    // Filtering Search Results
+    const stocks = resp.data.filter(function(symbol){
+      return (symbol.instrument_type === 'Digital Currency' || symbol.country === 'United States' || symbol.country === 'Canada');
+    });
+  
+
+
+    // Fetching Stock Quote Data
+
+   let stockQuotes = await getQuoteDetails(stocks);
+
+    stockQuotes = stockQuotes.filter(function( element ) {
+      return element !== undefined;
+    });
+
+    console.log(stockQuotes);
+    dispatch(replace(stockQuotes));
+
+    if (!response.ok) {
+      throw new Error(resp.message);
+    }
   
   };
-
-
 
   const handleKeyDown = async e => {
     if (e.key === 'Enter') {
@@ -47,19 +57,6 @@ export default function Search({classes})  {
   };
 
 
-
-
-  const renderStocks = async() => {
-    let stocks = <span>Search by names or symbols..</span>;
-
-    if (results) {
-      stocks = 'Has Result'
-    }
-
-    return stocks;
-  }
-
-
     return (
       <div>
             <InputBase
@@ -69,7 +66,7 @@ export default function Search({classes})  {
               classes={classes}
               inputProps={{ 'aria-label': 'search' }}
             />
-        {renderStocks}
+      
       </div>
     )
   

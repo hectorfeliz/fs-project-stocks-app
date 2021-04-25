@@ -16,11 +16,12 @@ app.use(express.json());
 
 
 const searchRouter = require('./routes/search/searchRoutes');
+const quoteRouter = require('./routes/quote/quoteRoutes');
 
 app.use('/api/search', searchRouter);
-
+app.use('/api/quote', quoteRouter);
 
 
 app.listen(process.env.PORT, () => {
 	console.log(`server is running on port ${process.env.PORT}`);
- });
+});

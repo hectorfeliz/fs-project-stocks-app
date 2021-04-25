@@ -1,8 +1,6 @@
-
-const { request } = require('express');
 const fetch = require('node-fetch');
 
-exports.getSymbolSearch = async (req, res) => {
+exports.getSymbolSearch = async (query) => {
 try {
 
   const options = {
@@ -14,16 +12,11 @@ try {
     }
   };
 
-  const response = await fetch('https://twelve-data1.p.rapidapi.com/symbol_search?symbol='+req.query+'&outputsize=30',options);
+  const response = await fetch('https://twelve-data1.p.rapidapi.com/symbol_search?symbol='+query+'&outputsize=10',options);
   // do something with the response
   // return some information
 
-
-  const data = response.json();
-
-  console.log('repsonse is...');
-  console.log(data);
-  return data;
+  return response.json();
 
 
 } catch (err) {

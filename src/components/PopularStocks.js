@@ -3,396 +3,151 @@ import { useState, useEffect } from 'react';
 import Stock from './Stock';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import CardHeader from '@material-ui/core/CardHeader';
+import Accordion from '@material-ui/core/Accordion';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import { makeStyles } from '@material-ui/core/styles';
+import theme from '../components/Theme';
+import getQuoteDetails from './StockDetails';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
+const useStyles = makeStyles((theme) => ([theme]));
 
 function PopularStocks() {
 
-    const [popular,setPopular] = useState([
-        {
-            "symbol":"GSPC",
-            "name":"S&P 500",
-            "exchange":"NYSE",
-            "currency":"USD",
-            "datetime":"2021-04-09",
-            "open":"4096.10986",
-            "high":"4129.47998",
-            "low":"4095.51001",
-            "close":"4127.75977",
-            "volume":"877550725",
-            "previous_close":"4097.22021",
-            "change":"30.53955",
-            "percent_change":"0.74537",
-            "fifty_two_week":{
-                "low":"2455.79004",
-                "high":"4189.99023",
-                "low_change":"1733.93994",
-                "high_change":"-0.26025",
-                "low_change_percent":"70.60620",
-                "high_change_percent":"-0.00621",
-                "range":"2455.790039 - 4189.990234"  
-            }
-        },
-        {
-            "symbol":"AMZN",
-            "name":"Amazon.com Inc",
-            "exchange":"NASDAQ",
-            "currency":"USD",
-            "datetime":"2021-04-09",
-            "open":"3304.69995",
-            "high":"3372.19995",
-            "low":"3288.89990",
-            "close":"3372.19995",
-            "volume":"4334600",
-            "previous_close":"3299.30005",
-            "change":"72.89990",
-            "percent_change":"2.20956",
-            "average_volume":"3028596",
-            "fifty_two_week":{
-                "low":"1889.15002",
-                "high":"3552.25000",
-                "low_change":"1510.28992",
-                "high_change":"-152.81006",
-                "low_change_percent":"79.94547",
-                "high_change_percent":"-4.30178",
-                "range":"1889.150024 - 3552.250000",
-            }
-        },
-        {
-            "symbol":"AAPL",
-            "name":"Apple Inc",
-            "exchange":"NASDAQ",
-            "currency":"USD",
-            "datetime":"2021-04-09",
-            "open":"129.80000",
-            "high":"133.03999",
-            "low":"129.47000",
-            "close":"133.00000",
-            "volume":"106513800",
-            "previous_close":"130.36000",
-            "change":"2.64000",
-            "percent_change":"2.02516",
-            "average_volume":"89743153", 
-            "fifty_two_week":{
-                "low":"1889.15002",
-                "high":"3552.25000",
-                "low_change":"1510.28992",
-                "high_change":"-152.81006",
-                "low_change_percent":"79.94547",
-                "high_change_percent":"-4.30178",
-                "range":"1889.150024 - 3552.250000",
-            }
-               
-        },
-        {
-            "symbol":"MSFT",
-            "name":"Microsoft Corp",
-            "exchange":"NASDAQ",
-            "currency":"USD",
-            "datetime":"2021-04-09",
-            "open":"252.87000",
-            "high":"255.99001",
-            "low":"252.44000",
-            "close":"255.85001",
-            "previous_close":"253.25000",
-            "change":"2.60001",
-            "percent_change":"1.02666",
-            "average_volume":"27234761",
-            "fifty_two_week":{
-                "low":"1889.15002",
-                "high":"3552.25000",
-                "low_change":"1510.28992",
-                "high_change":"-152.81006",
-                "low_change_percent":"79.94547",
-                "high_change_percent":"-4.30178",
-                "range":"1889.150024 - 3552.250000",
-            }
-        },
-        {
-            "symbol":"FB",
-            "name":"Facebook Inc",
-            "exchange":"NASDAQ",
-            "currency":"USD",
-            "datetime":"2021-04-09",
-            "open":"311.39999",
-            "high":"314.73999",
-            "low":"310.32999",
-            "close":"312.45999",
-            "volume":"15983000",
-            "previous_close":"313.01999",
-            "change":"-0.56000",
-            "percent_change":"-0.17890",
-            "average_volume":"19561510",
-            "fifty_two_week":{
-                "low":"1889.15002",
-                "high":"3552.25000",
-                "low_change":"1510.28992",
-                "high_change":"-152.81006",
-                "low_change_percent":"79.94547",
-                "high_change_percent":"-4.30178",
-                "range":"1889.150024 - 3552.250000",
-            }
-        },
-        {
-            "symbol":"GOOGL",
-            "name":"Alphabet Inc",
-            "exchange":"NASDAQ",
-            "currency":"USD",
-            "datetime":"2021-04-09",
-            "open":"2245.43994",
-            "high":"2273.96997",
-            "low":"2237.26001",
-            "close":"2270.66992",
-            "volume":"1304400",
-            "previous_close":"2250.42993",
-            "change":"20.23999",
-            "percent_change":"0.89938",
-            "average_volume":"1598654",
-            "fifty_two_week":{
-                "low":"1889.15002",
-                "high":"3552.25000",
-                "low_change":"1510.28992",
-                "high_change":"-152.81006",
-                "low_change_percent":"79.94547",
-                "high_change_percent":"-4.30178",
-                "range":"1889.150024 - 3552.250000",
-            }
-        },
-        {
-            "symbol":"TSLA",
-            "name":"Tesla Inc",
-            "exchange":"NASDAQ",
-            "currency":"USD",
-            "datetime":"2021-04-09",
-            "open":"677.77002",
-            "high":"680.96997",
-            "low":"669.42999",
-            "close":"677.02002",
-            "volume":"21402600",
-            "previous_close":"683.79999",
-            "change":"-6.77997",
-            "percent_change":"-0.99151",
-            "average_volume":"31010011",
-            "fifty_two_week":{
-                "low":"1889.15002",
-                "high":"3552.25000",
-                "low_change":"1510.28992",
-                "high_change":"-152.81006",
-                "low_change_percent":"79.94547",
-                "high_change_percent":"-4.30178",
-                "range":"1889.150024 - 3552.250000",
-            }
-        },
-        {
-            "symbol":"BRK.B",
-            "name":"Berkshire Hathaway Inc",
-            "exchange":"NYSE",
-            "currency":"USD",
-            "datetime":"2021-04-09",
-            "open":"264.22000",
-            "high":"266.23999",
-            "low":"263.35001",
-            "close":"266.01001",
-            "volume":"6052500",
-            "previous_close":"263.51001",
-            "change":"2.50000",
-            "percent_change":"0.94873",
-            "average_volume":"4749541",
-            "fifty_two_week":{
-                "low":"1889.15002",
-                "high":"3552.25000",
-                "low_change":"1510.28992",
-                "high_change":"-152.81006",
-                "low_change_percent":"79.94547",
-                "high_change_percent":"-4.30178",
-                "range":"1889.150024 - 3552.250000",
-            }
-        },
-        {
-            "symbol":"JPM",
-            "name":"JPMorgan Chase & Co",
-            "exchange":"NYSE",
-            "currency":"USD",
-            "datetime":"2021-04-09",
-            "open":"155.81000",
-            "high":"157.03999",
-            "low":"154.97000",
-            "close":"156.28000",
-            "volume":"12116500",
-            "previous_close":"155.12000",
-            "change":"1.16000",
-            "percent_change":"0.74781",
-            "average_volume":"14650092",
-            "fifty_two_week":{
-                "low":"1889.15002",
-                "high":"3552.25000",
-                "low_change":"1510.28992",
-                "high_change":"-152.81006",
-                "low_change_percent":"79.94547",
-                "high_change_percent":"-4.30178",
-                "range":"1889.150024 - 3552.250000",
-            }
-        },
-        {
-            "symbol":"V",
-            "name":"Visa Inc",
-            "exchange":"NYSE",
-            "currency":"USD",
-            "datetime":"2021-04-09",
-            "open":"221.00000",
-            "high":"222.60001",
-            "low":"219.50999",
-            "close":"222.52000",
-            "volume":"5720000",
-            "previous_close":"220.70000",
-            "change":"1.82001",
-            "percent_change":"0.82465",
-            "average_volume":"7794596",
-            "fifty_two_week":{
-                "low":"1889.15002",
-                "high":"3552.25000",
-                "low_change":"1510.28992",
-                "high_change":"-152.81006",
-                "low_change_percent":"79.94547",
-                "high_change_percent":"-4.30178",
-                "range":"1889.150024 - 3552.250000",
-            }
-        },
-        {
-            "symbol":"DJI",
-            "name":"Dow Jones Industrial Average",
-            "exchange":"NYSE",
-            "currency":"USD",
-            "datetime":"2021-04-09",
-            "open":"33526.19141",
-            "high":"33810.87109",
-            "low":"33526.19141",
-            "close":"33794.33984",
-            "volume":"145285646",
-            "previous_close":"33504.03125",
-            "change":"290.30859",
-            "percent_change":"0.86649",
-            "average_volume":"328483138",
-            "fifty_two_week":{
-                "low":"1889.15002",
-                "high":"3552.25000",
-                "low_change":"1510.28992",
-                "high_change":"-152.81006",
-                "low_change_percent":"79.94547",
-                "high_change_percent":"-4.30178",
-                "range":"1889.150024 - 3552.250000",
-            }
-        },
-        {
-            "symbol":"GLD",
-            "name":"SPDR Gold Shares",
-            "exchange":"NYSE",
-            "currency":"USD",
-            "datetime":"2021-04-09",
-            "open":"162.77000",
-            "high":"163.53000",
-            "low":"162.48000",
-            "close":"163.28999",
-            "volume":"3799235",
-            "previous_close":"164.50999",
-            "change":"-1.22000",
-            "percent_change":"-0.74160",
-            "average_volume":"6600242",
-            "fifty_two_week":{
-                "low":"1889.15002",
-                "high":"3552.25000",
-                "low_change":"1510.28992",
-                "high_change":"-152.81006",
-                "low_change_percent":"79.94547",
-                "high_change_percent":"-4.30178",
-                "range":"1889.150024 - 3552.250000",
-            }
-        },
-        {
-            "symbol":"GE",
-            "name":"General Electric Co",
-            "exchange":"NYSE",
-            "currency":"USD",
-            "datetime":"2021-04-09",
-            "open":"13.50000",
-            "high":"13.83000",
-            "low":"13.42000",
-            "close":"13.60000",
-            "volume":"63121500",
-            "previous_close":"13.45000",
-            "change":"0.15000",
-            "percent_change":"1.11525",
-            "average_volume":"53486550",
-            "fifty_two_week":{
-                "low":"1889.15002",
-                "high":"3552.25000",
-                "low_change":"1510.28992",
-                "high_change":"-152.81006",
-                "low_change_percent":"79.94547",
-                "high_change_percent":"-4.30178",
-                "range":"1889.150024 - 3552.250000",
-            }
-        },
-        {
-            "symbol":"IXIC",
-            "name":"NASDAQ Composite",
-            "exchange":"NASDAQ",
-            "currency":"USD",
-            "datetime":"2021-04-09",
-            "open":"13790.47461",
-            "high":"13905.29492",
-            "low":"13748.34863",
-            "close":"13895.10449",
-            "volume":"1577205516",
-            "previous_close":"13829.19434",
-            "change":"65.91016",
-            "percent_change":"0.47660",
-            "average_volume":"12066501594",
-            "fifty_two_week":{
-                "low":"1889.15002",
-                "high":"3552.25000",
-                "low_change":"1510.28992",
-                "high_change":"-152.81006",
-                "low_change_percent":"79.94547",
-                "high_change_percent":"-4.30178",
-                "range":"1889.150024 - 3552.250000",
-            }
-        },
-        {
-            "symbol":"SHOP",
-            "name":"Shopify Inc",
-            "exchange":"NYSE",
-            "currency":"USD",
-            "datetime":"2021-04-09",
-            "open":"1212.00000",
-            "high":"1234.50000",
-            "low":"1190.16003",
-            "close":"1227.30005",
-            "volume":"1234800",
-            "previous_close":"1222.68994",
-            "change":"4.61011",
-            "percent_change":"0.37705",
-            "average_volume":"325161651",
-            "fifty_two_week":{
-                "low":"1889.15002",
-                "high":"3552.25000",
-                "low_change":"1510.28992",
-                "high_change":"-152.81006",
-                "low_change_percent":"79.94547",
-                "high_change_percent":"-4.30178",
-                "range":"1889.150024 - 3552.250000",
-            }
+    const [popularStocks, setPopularStocks] = useState('');
+    const [expanded, setExpanded] = useState(false);
+
+    const popular = [{
+        "symbol":"GSPC",
+        "name":"S&P 500",
+        "exchange":"NYSE",
+    },
+    {
+        "symbol":"AMZN",
+        "name":"Amazon.com Inc",
+        "exchange":"NASDAQ",
+    },
+    {
+        "symbol":"AAPL",
+        "name":"Apple Inc",
+        "exchange":"NASDAQ",
+           
+    },
+    {
+        "symbol":"MSFT",
+        "name":"Microsoft Corp",
+        "exchange":"NASDAQ",
+    },
+    {
+        "symbol":"FB",
+        "name":"Facebook Inc",
+        "exchange":"NASDAQ",
+    },
+    {
+        "symbol":"GOOGL",
+        "name":"Alphabet Inc",
+        "exchange":"NASDAQ",
+    },
+    {
+        "symbol":"TSLA",
+        "name":"Tesla Inc",
+        "exchange":"NASDAQ",
+    },
+    {
+        "symbol":"BRK.B",
+        "name":"Berkshire Hathaway Inc",
+        "exchange":"NYSE",
+    },
+    {
+        "symbol":"JPM",
+        "name":"JPMorgan Chase & Co",
+        "exchange":"NYSE"
+    },
+    {
+        "symbol":"V",
+        "name":"Visa Inc",
+        "exchange":"NYSE",
+    },
+    {
+        "symbol":"DJI",
+        "name":"Dow Jones Industrial Average",
+        "exchange":"NYSE",
+    },
+    {
+        "symbol":"GLD",
+        "name":"SPDR Gold Shares",
+        "exchange":"NYSE",
+    },
+    {
+        "symbol":"GE",
+        "name":"General Electric Co",
+        "exchange":"NYSE",
+    },
+    {
+        "symbol":"IXIC",
+        "name":"NASDAQ Composite",
+        "exchange":"NASDAQ",
+    },
+    {
+        "symbol":"SHOP",
+        "name":"Shopify Inc",
+        "exchange":"NYSE"
+    }];
+
+    useEffect(() => {
+
+        if (!popularStocks) {
+            getPopularStocks();
         }
-    ]);
+      }, []);
 
 
+    const getPopularStocks = async () => { 
 
+        const stocks = await getQuoteDetails(popular);
+        console.log(stocks);
+        setPopularStocks(stocks);
+    
+    };
+
+    
+    const handleChange = (panel) => (event, isExpanded) => {
+        setExpanded(isExpanded ? panel : false);
+      };
+
+    const classes = useStyles();
+    if(!popularStocks.length){
     return (
-        <div class="popular_stocks">
+        <Card className={`${classes.root} stock_list`} >
+        <CardHeader className="stock_list__header" 
+                 title="Popular Stocks"
+                 subheader="No results found">
+             </CardHeader>    
+         </Card>
+     );
+    }
 
-                <Typography color="#fff" gutterBottom variant="h3" component="div"> 
-                 Popular Stocks
-                </Typography>
+  
+    return (
+        <Card className={`${classes.root} stock_list`}>
+            <Accordion expanded={expanded === 'panel-popular'} onChange={handleChange('panel-popular')}>
+                
+                <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1bh-content"
+                id="panel1bh-header"
+                >
+                <CardHeader className="stock_list__header" title="Popular Stocks">
+                </CardHeader>
+                </AccordionSummary>
 
-                <Grid
+                <AccordionDetails>
+                <CardContent className="stock_list__content">
+                 <Grid
                 container
                 spacing={4}
                 direction="row"
@@ -401,7 +156,7 @@ function PopularStocks() {
 
                    {
 
-                    popular.map((stock) => {
+                popularStocks.map((stock) => {
                         return(
                             <Stock 
                             symbol={stock.symbol}
@@ -419,9 +174,12 @@ function PopularStocks() {
                 }    
 
                 </Grid>
-
-        </div>
+                </CardContent>
+                </AccordionDetails>
+                </Accordion>
+        </Card>
     )
+    
 }
 
 export default PopularStocks
