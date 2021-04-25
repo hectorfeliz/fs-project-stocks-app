@@ -18,4 +18,11 @@ body {
   height: 100%;
   background-color: #f4f6f8;
 }
+
+@media (max-width: 768px) {
+  body .App .MuiContainer-root {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
 /*# sourceMappingURL=App.css.map */

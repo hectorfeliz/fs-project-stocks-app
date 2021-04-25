@@ -7,6 +7,7 @@
         border-top: 10px solid $secondary;
 
         .drawer__inner{
+            padding-top: 30px;
             min-height: calc(100vh - 74px);
 
 
@@ -29,6 +30,7 @@
                     margin: 0;
                     font-weight: 700;
                     margin-bottom: 0px;
+                    width: 100%;
                     float: left;
                     clear: left;
 
@@ -54,11 +56,13 @@
 
                 .stock__price{
                     line-height: 54px;
-                    margin-left: 48px;
+                    margin-left: 0;
                     font-size: 35px;
                     display: flex;
                     align-items: center;
                     font-weight: bold;
+                    width: 100%;
+                   
 
                     small{
                     line-height: 14px;
@@ -78,6 +82,10 @@
                     }
 
 
+                }
+
+                .stock__date{
+                    color: $gray;
                 }
 
                 .stock__currency{
@@ -102,11 +110,16 @@
             }
 
             .drawer__details__header{
-                margin-bottom: 10px;
+                margin-bottom: 20px;
             }
 
             .drawer__details{
+                margin-top: 10px;
                 
+                .MuiDivider-root{
+                    height: 2px;
+                    background-color: rgba(255, 255, 255, 0.5);
+                }
                 
                 .drawer__details__info{
 
@@ -120,11 +133,14 @@
                         font-size: 15px;
                         line-height: 20px;
                         font-weight: 700;
+                        color: $gray;
                     }
 
                     .MuiListItemText-secondary{
                         font-size: 15px;
                         line-height: 20px;
+                        color: $primary;
+                        font-weight: 700;
                     }
 
 

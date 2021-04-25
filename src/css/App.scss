@@ -10,7 +10,14 @@
       background-color: #f4f6f8;
 
       .App {
-  
+
+        .MuiContainer-root{
+            @media (max-width: 768px){
+              padding-left: 0;
+              padding-right: 0;
+          }
+        }
+
 
       }
     }

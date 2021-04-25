@@ -16,11 +16,13 @@ body .paper .MuiList-padding {
   margin: 0 10px;
 }
 
-.header .search__container {
-  width: 40%;
-}
-
 .header .search__container .MuiInputBase-root, .header .search__container input {
   width: 100%;
+}
+
+@media (min-width: 960px) {
+  .header .search__container {
+    width: 40%;
+  }
 }
 /*# sourceMappingURL=Header.css.map */

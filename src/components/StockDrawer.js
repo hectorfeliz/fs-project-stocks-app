@@ -23,6 +23,7 @@ var formatter = new Intl.NumberFormat('en-US', {
 function StockDrawer({details, changeElement}) {
   
 
+    console.log(details);
 
     return (
         <div className="drawer" color="#fff">
@@ -32,20 +33,20 @@ function StockDrawer({details, changeElement}) {
                         
 
             <Grid item md={6} xs={12}>
-                        <Typography className="stock__name" variant="p" component="p">
-                            {details.name}
+                        <Typography className="stock__name" variant="p" component="p">{details.name}</Typography>
+                        <Typography className="stock__symbol" color="#fff" gutterBottom variant="h3" component="div"> {details.symbol}</Typography>
+
+                        <Typography className="stock__price" variant="h5" component="p" title={details.currency}>
+                            {formatter.format(parseFloat(details.close))}   {changeElement}
+                        </Typography>   
+                        <Typography className="stock__date" variant="h6" component="p" title={details.currency}>
+                             As of {details.datetime}    
                         </Typography>
-                        <Typography className="stock__symbol" color="#fff" gutterBottom variant="h3" component="div"> 
-                                        {details.symbol}
-                        </Typography>
-                      
             </Grid>
 
 
-            <Grid item md={4} xs={12}>
-            <Typography className="stock__price" variant="h5" component="p" title={details.currency}>
-                            {formatter.format(parseFloat(details.close))}   {changeElement}
-                        </Typography>   
+            <Grid item md={6} xs={12}>
+            
             </Grid>
     
                 </Grid>
@@ -60,78 +61,76 @@ function StockDrawer({details, changeElement}) {
                 <Paper className="drawer__details paper">
 
 
-                <List className="">
+                <List className="" md={12} xs={12}>
 
-                <Grid container spacing={0}>
+                    <Grid container md={12} xs={12} spacing={0}>
 
-                    <Grid item md={6} xs={12}>
-                            <ListItem>
-                                <ListItemText className="drawer__details__info" primary="Open" secondary={formatter.format(parseFloat(details.open))}  />
-                            </ListItem>
-                            <Divider />
-
-
-                            <ListItem>
-                                <ListItemText className="drawer__details__info" primary="Close" secondary={formatter.format(parseFloat(details.close))}  />
-                            </ListItem>
-                            <Divider />
+                        <Grid item md={6} xs={12}>
+                                <ListItem>
+                                    <ListItemText className="drawer__details__info" primary="Open" secondary={formatter.format(parseFloat(details.open))}  />
+                                </ListItem>
+                                <Divider />
 
 
-                            <ListItem>
-                                <ListItemText className="drawer__details__info" primary="High" secondary={formatter.format(parseFloat(details.high))}  />
-                            </ListItem>
-                            <Divider />
+                                <ListItem>
+                                    <ListItemText className="drawer__details__info" primary="Close" secondary={formatter.format(parseFloat(details.close))}  />
+                                </ListItem>
+                                <Divider />
 
 
-                            <ListItem>
-                                <ListItemText className="drawer__details__info" primary="Low" secondary={formatter.format(parseFloat(details.low))}  />
-                            </ListItem>
-                            <Divider />
+                                <ListItem>
+                                    <ListItemText className="drawer__details__info" primary="High" secondary={formatter.format(parseFloat(details.high))}  />
+                                </ListItem>
+                                <Divider />
 
 
-                            <ListItem>
-                                <ListItemText className="drawer__details__info" primary="Previous Close" secondary={formatter.format(parseFloat(details.previous_close))}  />
-                            </ListItem>
-                            <Divider />
-
-                    </Grid>
-                    
-
-                    <Grid item md={6} xs={12}>
-                    <ListItem>
-                            <ListItemText className="drawer__details__info" primary="52-Week high" secondary={formatter.format(parseFloat(details.fifty_two_week.high))}  />
-                            </ListItem>
-                            <Divider />
-
-                            <ListItem>
-                                <ListItemText className="drawer__details__info" primary="52-Week low" secondary={formatter.format(parseFloat(details.fifty_two_week.low))}  />
-                            </ListItem>
-                            <Divider />
+                                <ListItem>
+                                    <ListItemText className="drawer__details__info" primary="Low" secondary={formatter.format(parseFloat(details.low))}  />
+                                </ListItem>
+                                <Divider />
 
 
-                            <ListItem>
-                                <ListItemText className="drawer__details__info" primary="Volume" secondary={formatter.format(parseFloat(details.volume))}  />
-                            </ListItem>
-                            <Divider />
+                                <ListItem>
+                                    <ListItemText className="drawer__details__info" primary="Previous Close" secondary={formatter.format(parseFloat(details.previous_close))}  />
+                                </ListItem>
+                                <Divider />
+
+                        </Grid>
+                        
+
+                        <Grid item md={6} xs={12}>
+                        <ListItem>
+                                <ListItemText className="drawer__details__info" primary="52-Week high" secondary={formatter.format(parseFloat(details.fifty_two_week.high))}  />
+                                </ListItem>
+                                <Divider />
+
+                                <ListItem>
+                                    <ListItemText className="drawer__details__info" primary="52-Week low" secondary={formatter.format(parseFloat(details.fifty_two_week.low))}  />
+                                </ListItem>
+                                <Divider />
 
 
-                            <ListItem>
-                                <ListItemText className="drawer__details__info" primary="Currency" secondary={details.currency}  />
-                            </ListItem>
-                            <Divider />
+                                <ListItem>
+                                    <ListItemText className="drawer__details__info" primary="Volume" secondary={formatter.format(parseFloat(details.volume))}  />
+                                </ListItem>
+                                <Divider />
 
-                            <ListItem>
-                                <ListItemText className="drawer__details__info" primary="Exchange" secondary={details.exchange}  />
-                            </ListItem>
-                            <Divider />
-        
 
-                    </Grid>
+                                <ListItem>
+                                    <ListItemText className="drawer__details__info" primary="Currency" secondary={details.currency}  />
+                                </ListItem>
+                                <Divider />
+
+                                <ListItem>
+                                    <ListItemText className="drawer__details__info" primary="Exchange" secondary={details.exchange}  />
+                                </ListItem>
+                                <Divider />
             
-                 </Grid>
 
-                    
-     
+                        </Grid>
+                
+                    </Grid>
+
                 </List>
 
                 </Paper>
@@ -140,9 +139,7 @@ function StockDrawer({details, changeElement}) {
 
                 </div>
 
-                        
-
-                    
+                
             </Container>
         </div>
     )

@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ([theme]));
 function PopularStocks() {
 
     const [popularStocks, setPopularStocks] = useState('');
-    const [expanded, setExpanded] = useState(false);
+    const [expanded, setExpanded] = useState('panel-popular');
 
     const popular = [{
         "symbol":"GSPC",
@@ -111,7 +111,8 @@ function PopularStocks() {
         const stocks = await getQuoteDetails(popular);
         console.log(stocks);
         setPopularStocks(stocks);
-    
+        setExpanded('panel-popular');
+
     };
 
     
@@ -125,7 +126,7 @@ function PopularStocks() {
         <Card className={`${classes.root} stock_list`} >
         <CardHeader className="stock_list__header" 
                  title="Popular Stocks"
-                 subheader="No results found">
+                 subheader="Loading">
              </CardHeader>    
          </Card>
      );

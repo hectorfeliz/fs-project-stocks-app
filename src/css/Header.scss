@@ -7,11 +7,15 @@
     }
 
     .search__container{
-        width: 40%;
+        
     
 
        .MuiInputBase-root, input{
             width: 100%;
+        }
+
+        @media (min-width: 960px){
+            width: 40%;
         }
     }
 

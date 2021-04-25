@@ -70,7 +70,7 @@ function Stock({symbol, exchange, name, price, change, currency, details}) {
             };
             
         return (
-        <Grid item xs={12} sm={6} md={6} lg={4} >
+        <Grid item xs={12} sm={12} md={6} lg={4} >
 
             <React.Fragment key={targetIdentifier}>
                 <Card color="#fff" className={`stock ${classes.root}`}
