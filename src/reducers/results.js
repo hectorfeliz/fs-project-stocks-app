@@ -1,12 +1,12 @@
 const resultsReducer = (state = [], action) => {
 
     switch(action.type){
-        case 'REPLACE':
+        case 'REPLACE_RESULTS':
             return action.payload
-        case 'CLEAR':
+        case 'CLEAR_RESULTS':
             return []    
         default:
-            return []     
+            return state     
     }
 
 }

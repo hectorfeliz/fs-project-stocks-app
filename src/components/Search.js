@@ -3,7 +3,8 @@ import Stock from './Stock';
 import InputBase from '@material-ui/core/InputBase';
 import { useDispatch } from 'react-redux';
 import getQuoteDetails from './StockDetails';
-import replace from '../actions';
+import {replaceResults} from '../actions';
+import saveState from '../local_storage/save';
 
 
 export default function Search({classes, props})  {
@@ -20,11 +21,10 @@ export default function Search({classes, props})  {
 
     const resp = await response.json();
 
-    console.log(resp);
 
     // Filtering Search Results
     const stocks = resp.data.filter(function(symbol){
-      return (symbol.instrument_type === 'Digital Currency' || symbol.country === 'United States' || symbol.country === 'Canada');
+      return ((symbol.currency === 'USD' || symbol.currency === 'CAD') && (symbol.instrument_type === 'Digital Currency' || symbol.country === 'United States' || symbol.country === 'Canada'));
     });
   
 
@@ -38,7 +38,12 @@ export default function Search({classes, props})  {
     });
 
     console.log(stockQuotes);
-    dispatch(replace(stockQuotes));
+
+   
+
+
+    dispatch(replaceResults(stockQuotes));
+ 
 
     if (!response.ok) {
       throw new Error(resp.message);

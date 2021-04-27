@@ -5,6 +5,8 @@ import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import Container from '@material-ui/core/Container';
 import SearchResults from './components/SearchResults';
 import PopularStocks from './components/PopularStocks';
+import PortfolioList from './components/PortfolioList';
+
 import WebFont from 'webfontloader';
 import './css/List.css';
 import { makeStyles } from '@material-ui/core/styles';
@@ -25,6 +27,7 @@ class StocksApp extends Component {
       <Router>
         <Header />
         <Container spacing={3} fixed>
+        <PortfolioList />  
         <SearchResults />
         <PopularStocks />
         </Container>

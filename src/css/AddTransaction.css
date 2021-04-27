@@ -1,0 +1,13 @@
+.add_transaction .add_transaction__input {
+  margin: 10px;
+  max-width: 130px;
+}
+
+.add_transaction .add_transaction__button {
+  margin: 16px 10px;
+}
+
+.add_transaction .add_transaction__button * {
+  color: white !important;
+}
+/*# sourceMappingURL=AddTransaction.css.map */

@@ -6,11 +6,11 @@ const theme = createMuiTheme({
     fontFamily: 'Lato, Arial',
   },
   palette: {
-    type: 'dark',
+    type: 'light',
     primary: {
-      main: '#1D132D',
+      main: '#0d6ce0',
       light: '#1A3453',
-      dark: '#1D132D',
+      dark: '#0d6ce0',
     },
     secondary: {
       main: '#ffffff',

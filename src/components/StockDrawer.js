@@ -10,8 +10,23 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 
 import Paper from '@material-ui/core/Paper';
-
 import Grid from '@material-ui/core/Grid';
+
+// clean up
+
+import Input from '@material-ui/core/Input';
+import FilledInput from '@material-ui/core/FilledInput';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
+import InputLabel from '@material-ui/core/InputLabel';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import TextField from '@material-ui/core/TextField';
+
+// clean
+
+
+import AddTransaction from './AddTransaction';
 
 import '../css/StockDrawer.css';
 
@@ -22,8 +37,6 @@ var formatter = new Intl.NumberFormat('en-US', {
 
 function StockDrawer({details, changeElement}) {
   
-
-    console.log(details);
 
     return (
         <div className="drawer" color="#fff">
@@ -46,13 +59,36 @@ function StockDrawer({details, changeElement}) {
 
 
             <Grid item md={6} xs={12}>
-            
+            <AddTransaction
+            exchange={details.exchange}
+            symbol={details.symbol}
+            stockPrice={parseFloat(details.close).toFixed(2)}
+            currency={details.currency}
+            />
             </Grid>
     
-                </Grid>
+            </Grid>
 
  
-                <Divider  />
+             
+
+
+                <Typography variant="h6" component="span" gutterBottom className="drawer__details__header" >
+                    Your holdings
+                </Typography>
+
+
+                <Paper className="drawer__details paper">
+
+
+                
+
+
+                </Paper>
+                
+
+               
+
 
                 <Typography variant="h6" component="span" gutterBottom className="drawer__details__header" >
                     Market Details
@@ -63,7 +99,7 @@ function StockDrawer({details, changeElement}) {
 
                 <List className="" md={12} xs={12}>
 
-                    <Grid container md={12} xs={12} spacing={0}>
+                    <Grid container md={12} >
 
                         <Grid item md={6} xs={12}>
                                 <ListItem>

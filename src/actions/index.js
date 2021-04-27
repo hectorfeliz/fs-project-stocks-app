@@ -1,10 +1,24 @@
-const replace = repl => {
+const replaceResults = repl => {
 
     return {
-        type: 'REPLACE',
+        type: 'REPLACE_RESULTS',
         payload: repl
     };
 
 };
 
-export default replace;
+const replacePortfolio = repl => {
+
+    return {
+        type: 'REPLACE_PORTFOLIO',
+        payload: repl
+    };
+
+};
+
+
+
+module.exports = {
+    replaceResults,
+    replacePortfolio
+};

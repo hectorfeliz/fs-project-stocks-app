@@ -49,11 +49,11 @@ const useStyles = makeStyles({
 
 function Stock({symbol, exchange, name, price, change, currency, details}) {
     const classes = useStyles(),
-          targetIdentifier = symbol.replace(/\s+/g, '-').toLowerCase() + '-' + exchange.replace(/\s+/g, '-').toLowerCase(),
+          targetIdentifier = symbol.replace(/\s+/g, '-').toLowerCase() + ':' + exchange.replace(/\s+/g, '-').toLowerCase(),
           changeClass  = (parseFloat(change) > 0) ? 'negative' : 'positive',
           changeElement  = (parseFloat(change) > 0)
-            ? <Chip className="stock__change positive" color="positive" label={`${parseFloat(change).toFixed(3)}`} icon={<ArrowUpwardIcon />} /> 
-            : <Chip className="stock__change negative" color="negative" label={`${parseFloat(change).toFixed(3)}`} icon={<ArrowDownwardIcon />} />;
+            ? <Chip className="stock__change positive" label={`${parseFloat(change).toFixed(3)}`} icon={<ArrowUpwardIcon />} /> 
+            : <Chip className="stock__change negative" label={`${parseFloat(change).toFixed(3)}`} icon={<ArrowDownwardIcon />} />;
 
             const [state, setState] = useState({
                 targetIdentifier: false,
@@ -73,7 +73,7 @@ function Stock({symbol, exchange, name, price, change, currency, details}) {
         <Grid item xs={12} sm={12} md={6} lg={4} >
 
             <React.Fragment key={targetIdentifier}>
-                <Card color="#fff" className={`stock ${classes.root}`}
+                <Card color="#fff" className={`stock ${classes.root} ${targetIdentifier}`}
                         key={targetIdentifier}
                         onClick={toggleDrawer(targetIdentifier, true)}
                         onKeyDown={toggleDrawer(targetIdentifier, true)} >

@@ -11,7 +11,7 @@ import theme from './components/Theme';
 
 const store = createStore(allReducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
-
+//.clear();
 
 ReactDOM.render(
   <React.StrictMode>

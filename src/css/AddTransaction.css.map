@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAGI,gBAHY,CAGZ,uBAAuB,CAAA;EACnB,MAAM,EAAE,IAAI;EACZ,SAAS,EAAE,KAAK;CAEnB;;AAPL,AAQI,gBARY,CAQZ,wBAAwB,CAAA;EACpB,MAAM,EAAE,SAAS;CAMpB;;AAfL,AAWQ,gBAXQ,CAQZ,wBAAwB,CAGpB,CAAC,CAAA;EACG,KAAK,EAAE,gBAAgB;CAC1B",
+    "sources": [
+        "AddTransaction.scss"
+    ],
+    "names": [],
+    "file": "AddTransaction.css"
+}

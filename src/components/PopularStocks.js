@@ -99,7 +99,6 @@ function PopularStocks() {
     }];
 
     useEffect(() => {
-
         if (!popularStocks) {
             getPopularStocks();
         }

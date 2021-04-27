@@ -1,5 +1,7 @@
 const Portfolio = require('./portfolioModel');
 
+//user = _id
+
 exports.createPortfolio = async ({ name, user }) => {
   try {
     const newPortfolio = new Portfolio({
@@ -13,6 +15,7 @@ exports.createPortfolio = async ({ name, user }) => {
 };
 
 
+// id = _id
 
 exports.findPortfolioByID = async (id) => {
     try {
@@ -24,9 +27,9 @@ exports.findPortfolioByID = async (id) => {
 };
 
 
-exports.addTransaction = async ({id, symbol, exchange, type, quantity, price}) => {
+exports.addTransaction = async ({portfolioId, symbol, exchange, type = 'BUY', quantity, price}) => {
     try {
-        const portfolio = await Portfolio.findById(id);
+        const portfolio = await Portfolio.findById(portfolioId);
 
         portfolio.transactions.push({symbol, exchange, type, quantity, price});
 

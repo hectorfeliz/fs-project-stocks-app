@@ -12,7 +12,7 @@ try {
     }
   };
 
-  const response = await fetch('https://twelve-data1.p.rapidapi.com/quote?symbol='+query+'&outputsize=20&internal=1day',options);
+  const response = await fetch('https://twelve-data1.p.rapidapi.com/quote?symbol='+query+'&outputsize=1&internal=1day',options);
   // do something with the response
   // return some information
 

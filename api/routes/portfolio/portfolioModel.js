@@ -27,7 +27,6 @@ const transactionSchema = new Schema({
 const portfolioSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
-    required: true,
     ref: 'User',
   },
   name: {
@@ -39,20 +38,12 @@ const portfolioSchema = new Schema({
     type: Date,
     default: Date.now(),
   },
+  modifiedAt: {
+    type: Date,
+    default: Date.now(),
+  },
 });
 
 
-portfolioSchema.methods.addTransaction = function({symbol, exchange, type, quantity, price}) {
-    const portfolio = this;
-
-    const newTransaction = new transactionSchema({
-        symbol, exchange, type, quantity, price
-    });
-
-    portfolio.transactions.push(newTransaction);
-
-    const updatedPortfolio = await portfolio.save();
-    
-}
 
 module.exports = mongoose.model('Portfolio', portfolioSchema);
