@@ -14,7 +14,15 @@ app.use(cors());
 
 const path = require('path')
 
-app.use('/', express.static(path.join(__dirname, '../build')));
+// server.js at the very end of the file.
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('./build'));
+    // only add this part if you are using React Router
+    app.get('*', (req,res) =>{
+        console.log(path.join(__dirname+'/build/index.html'));
+        res.sendFile(path.join(__dirname+'/build/index.html'));
+    });
+}
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
