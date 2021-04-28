@@ -1,3 +1,4 @@
+import './css/normalize.css';
 import './css/App.css';
 import Header from './components/Header';
 import React, {Component} from 'react';
