@@ -8,6 +8,7 @@ import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import  allReducers  from './reducers';
 
 import theme from './components/Theme';
+localStorage.clear();
 
 const store = createStore(allReducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
