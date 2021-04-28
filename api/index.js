@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 const config = require('./config');
-const uri = config.DATABASE_URI;
+const uri = config.DATABASE_URL;
 
 const mongoose = require('mongoose');
 const express = require('express');
@@ -14,15 +14,8 @@ app.use(cors());
 
 const path = require('path')
 
-// server.js at the very end of the file.
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('./build'));
-    // only add this part if you are using React Router
-    app.get('*', (req,res) =>{
-        console.log(path.join(__dirname+'/build/index.html'));
-        res.sendFile(path.join(__dirname+'/build/index.html'));
-    });
-}
+
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -33,7 +26,6 @@ const quoteRouter = require('./routes/quote/quoteRoutes');
 app.use('/api/search', searchRouter);
 app.use('/api/quote', quoteRouter);
 
-//'mongodb://localhost:27017/stocks-app'
 
 mongoose.connect(uri,
     {
@@ -47,3 +39,13 @@ mongoose.connect(uri,
     });
   })
   .catch((err) => console.log(err));
+
+  // server.js at the very end of the file.
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('./build'));
+    // only add this part if you are using React Router
+    app.get('*', (req,res) =>{
+        console.log(path.join(__dirname+'/build/index.html'));
+        res.sendFile(path.join(__dirname+'/build/index.html'));
+    });
+}
