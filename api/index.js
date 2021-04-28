@@ -1,6 +1,8 @@
-require('dotenv').config({
-	path: `${__dirname}/.env`
-});
+require('dotenv').config();
+
+const config = require('./config');
+const uri = config.DATABASE_URI;
+
 const mongoose = require('mongoose');
 const express = require('express');
 const cors = require('cors');
@@ -23,16 +25,16 @@ const quoteRouter = require('./routes/quote/quoteRoutes');
 app.use('/api/search', searchRouter);
 app.use('/api/quote', quoteRouter);
 
+//'mongodb://localhost:27017/stocks-app'
 
-
-mongoose.connect('mongodb://localhost:27017/stocks-app',
+mongoose.connect(uri,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     },
   )
   .then(() => {
-    app.listen(process.env.PORT, () => {
+    app.listen(config.PORT, () => {
       console.log('server is running on port 8080');
     });
   })
