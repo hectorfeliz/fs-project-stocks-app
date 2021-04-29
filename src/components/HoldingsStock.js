@@ -63,8 +63,12 @@ function HoldingsStock(stock) {
 
 
 
+     console.log(portfolio);
+
 
     if(typeof portfolio !== "undefined"){
+
+    if(typeof portfolio.transactions !== "undefined"){
         const holdings = portfolio.transactions.filter(function(transaction) {
             if(transaction.symbol === details.symbol && transaction.exchange === details.exchange) {
               return true;
@@ -153,7 +157,7 @@ function HoldingsStock(stock) {
           }
           
 
-    }
+    }}
     return null;
 
 
