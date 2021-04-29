@@ -22,6 +22,12 @@ import Paper from '@material-ui/core/Paper';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 
+var formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  });
+
+
 
 function HoldingsStock(stock) {
 
@@ -75,7 +81,7 @@ function HoldingsStock(stock) {
 
             for(let item of mergedHoldings) {
                 shares += item.quantity;
-                total += parseFloat(item.price);
+                total += (parseFloat(item.price) * item.quantity);
               }
 
             console.log(mergedHoldings);
@@ -109,7 +115,7 @@ function HoldingsStock(stock) {
                         </TableCell>
 
                         <TableCell>
-                            <strong> ${total.toFixed(2)}</strong>
+                            <strong> {formatter.format(total.toFixed(2))}</strong>
                         </TableCell>
                       
                       
@@ -128,7 +134,7 @@ function HoldingsStock(stock) {
                               <TableCell></TableCell>
                               <TableCell></TableCell>
                               <TableCell align="right">
-                                ${parseFloat(row.price).toFixed(2)}
+                                {formatter.format(parseFloat(row.price).toFixed(2))}
                               </TableCell>
                             </TableRow>
                           ))}
