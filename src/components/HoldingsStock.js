@@ -62,7 +62,9 @@ function HoldingsStock(stock) {
      }
 
 
-    if(portfolio){
+
+
+    if(typeof portfolio !== "undefined"){
         const holdings = portfolio.transactions.filter(function(transaction) {
             if(transaction.symbol === details.symbol && transaction.exchange === details.exchange) {
               return true;
