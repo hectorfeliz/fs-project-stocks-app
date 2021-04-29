@@ -28,7 +28,7 @@ class StocksApp extends Component {
       <Router>
         <Header />
         <Container spacing={3} fixed>
-        <PortfolioList />  
+
         <SearchResults />
         <PopularStocks />
         </Container>

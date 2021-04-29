@@ -63,7 +63,6 @@ function PortfolioList() {
                 <CardContent className="stock_list__content">
                  <Grid
                 container
-                spacing={4}
                 direction="row"
                 justify="flex-start"
                 alignItems="flex-start">
@@ -73,6 +72,7 @@ function PortfolioList() {
                 PortfolioList.map((stock) => {
                         return(
                             <Stock 
+                            key={`portfolio:${stock.symbol}:${stock.exchange}`}
                             symbol={stock.symbol}
                             name={stock.name}
                             exchange={stock.exchange}

@@ -108,7 +108,6 @@ function PopularStocks() {
     const getPopularStocks = async () => { 
 
         const stocks = await getQuoteDetails(popular);
-        console.log(stocks);
         setPopularStocks(stocks);
         setExpanded('panel-popular');
 
@@ -119,10 +118,10 @@ function PopularStocks() {
         setExpanded(isExpanded ? panel : false);
       };
 
-    const classes = useStyles();
+   // const classes = useStyles();
     if(!popularStocks.length){
     return (
-        <Card className={`${classes.root} stock_list`} >
+        <Card className={` stock_list`} >
         <CardHeader className="stock_list__header" 
                  title="Popular Stocks"
                  subheader="Loading">
@@ -133,7 +132,7 @@ function PopularStocks() {
 
   
     return (
-        <Card className={`${classes.root} stock_list`}>
+        <Card className={` stock_list`}>
             <Accordion expanded={expanded === 'panel-popular'} onChange={handleChange('panel-popular')}>
                 
                 <AccordionSummary
@@ -159,6 +158,7 @@ function PopularStocks() {
                 popularStocks.map((stock) => {
                         return(
                             <Stock 
+                            key={`popular:${stock.symbol}:${stock.exchange}`}
                             symbol={stock.symbol}
                             name={stock.name}
                             exchange={stock.exchange}

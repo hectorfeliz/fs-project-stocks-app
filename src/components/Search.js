@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import getQuoteDetails from './StockDetails';
 import {replaceResults} from '../actions';
 import saveState from '../local_storage/save';
-
+import loadState from '../local_storage/load';
 
 export default function Search({classes, props})  {
 
@@ -37,11 +37,11 @@ export default function Search({classes, props})  {
       return element !== undefined;
     });
 
-    console.log(stockQuotes);
+    const persistedState = loadState() || [];
 
-   
+    persistedState.results = stockQuotes;
 
-
+    saveState(persistedState);
     dispatch(replaceResults(stockQuotes));
  
 

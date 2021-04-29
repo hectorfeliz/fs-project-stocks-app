@@ -4,7 +4,7 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
 }
 
 body .paper {
-  background-color: #f0f0f0 !important;
+  background-color: #f8f8f8 !important;
   padding: 0;
 }
 
@@ -18,6 +18,7 @@ body .paper .MuiList-padding {
 
 .header .search__container .MuiInputBase-root, .header .search__container input {
   width: 100%;
+  padding-left: 25px;
 }
 
 @media (min-width: 960px) {

@@ -21,69 +21,83 @@ import CardHeader from '@material-ui/core/CardHeader';
 
 export default function AddTransaction({symbol, exchange, stockPrice, currency}) {
 
-    const [quantity, setQuantity] = useState(1);
+    const [quantity, setQuantity] = useState("1");
     const [price, setPrice] = useState(stockPrice);
-
-
+    const [portfolioExists, setportfolioExists] = useState(false);
     const dispatch = useDispatch();
+
+
+    console.log('QUANTITY IS');
+    console.log(quantity);
+
+    console.log('-- add transaction app');
+
+
+    const portfolio = useSelector(state =>  state.portfolio);
+    console.log(portfolio);
+    console.log('-- ******** use selector ^^^^');
+    
  
     const handleSubmit= (e) => {
         e.preventDefault();
-        let persistedState = loadState();
+        const persistedState = loadState();
 
-  
-
-  
-        if(persistedState) {
-            if(persistedState.portfolio){
-        
-      
-              const updatePortfolio = persistedState.portfolio;
+        console.log('handle submit....');
+        console.log(persistedState);
     
-      
-              updatePortfolio.transactions.push({
-                  symbol,
-                  exchange,
-                  quantity,
-                  price,
-              });
-      
-              persistedState.portfolio = updatePortfolio;
-              saveState(persistedState);
-
-            }else{
-
-
-              // Initialize portfolio locally
-              let transactions=[];
-      
-              transactions.push({
-                  symbol,
-                  exchange,
-                  quantity,
-                  price,
-              });
-      
-              let portfolio = {
-                  name: "My Portfolio",
-                  transactions
-              }
-
-              persistedState.portfolio = portfolio;
-              saveState(persistedState);
-
-
-
-            }
+        if(portfolio) {
+          setportfolioExists(true);
+        }else{
+          setportfolioExists(false);
         }
 
 
-        
+        if(portfolioExists){
 
-   
-     
+          const updatePortfolio = persistedState.portfolio;
 
-      
+          updatePortfolio.transactions.push({
+              symbol,
+              exchange,
+              quantity,
+              price,
+          });
+
+          console.log('PORTFOLIO EXISTS *********');
+          console.log(updatePortfolio);
+
+          dispatch(replacePortfolio(updatePortfolio));
+
+          persistedState.portfolio = updatePortfolio;
+          saveState(persistedState);
+
+        }else{
+
+          // Initialize portfolio locally
+          let transactions=[];
+                
+          transactions.push({
+              symbol,
+              exchange,
+              quantity,
+              price,
+          });
+
+          let portfolio = {
+              name: "My Portfolio",
+              transactions
+          }
+
+          
+
+          console.log('PORTFOLIO INITIALIZED *********');
+          console.log(portfolio);
+
+          let persistedState = loadState();
+          saveState(persistedState);
+
+        }
+
 
     }
 
@@ -95,16 +109,16 @@ export default function AddTransaction({symbol, exchange, stockPrice, currency})
                  title="Add a transaction">
     </CardHeader>     
     <CardContent className="add_transaction__form__container">
-     <form className="add_transaction__form" key={`${symbol}:${exchange}`}  autoComplete="off" onSubmit={e => { handleSubmit(e) }}>
+     <form className="add_transaction__form" key={`${symbol}:${exchange}`} 
+      autoComplete="off" onSubmit={e => { handleSubmit(e) }}>
       <div>
         
         <TextField
           required
-          id="standard-number"
           label="Quantity"
           type="number"
           variant="outlined"
-          defaultValue="1"
+          InputProps={{ inputProps: { min: 0}}}
           value={quantity}
           onChange={e => setQuantity(e.target.value)}
           className="add_transaction__input"
@@ -116,13 +130,12 @@ export default function AddTransaction({symbol, exchange, stockPrice, currency})
        
        <TextField
           required
-          id="standard-number"
           label={`Price (${currency})`}
           type="number"
           variant="outlined"
           className="add_transaction__input"
-          defaultValue={stockPrice}
           value={price}
+      
           onChange={e => setPrice(e.target.value)}
           InputLabelProps={{
             shrink: true,

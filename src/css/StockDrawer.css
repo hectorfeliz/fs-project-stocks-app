@@ -4,7 +4,7 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
 }
 
 body .paper {
-  background-color: #f0f0f0 !important;
+  background-color: #f8f8f8 !important;
   padding: 0;
 }
 
@@ -113,6 +113,8 @@ body .paper .MuiList-padding {
 
 .stock__drawer__container .drawer .drawer__inner .drawer__details {
   margin-top: 10px;
+  padding: 20px 10px;
+  margin-bottom: 30px;
 }
 
 .stock__drawer__container .drawer .drawer__inner .drawer__details .MuiDivider-root {

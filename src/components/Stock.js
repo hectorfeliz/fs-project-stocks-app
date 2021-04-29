@@ -27,7 +27,7 @@ const useStyles = makeStyles({
         minWidth: 275,
         background: '#1A3453',
         borderRadius: 3,
-        color: '#fff',
+        color: '#ffffff',
         padding: '2px',
         boxShadow: '0 3px 5px 2px rgba(255, 255, 255, .3)',
     },
@@ -55,10 +55,13 @@ function Stock({symbol, exchange, name, price, change, currency, details}) {
             ? <Chip className="stock__change positive" label={`${parseFloat(change).toFixed(3)}`} icon={<ArrowUpwardIcon />} /> 
             : <Chip className="stock__change negative" label={`${parseFloat(change).toFixed(3)}`} icon={<ArrowDownwardIcon />} />;
 
-            const [state, setState] = useState({
-                targetIdentifier: false,
+            const [state, setState] = useState( {
+                [targetIdentifier]: false,
               });
-            
+
+
+  
+
             const toggleDrawer = (anchor, open) => (event) => {
                 
                 
@@ -69,30 +72,31 @@ function Stock({symbol, exchange, name, price, change, currency, details}) {
                 setState({ ...state, [anchor]: open });
             };
             
-        return (
-        <Grid item xs={12} sm={12} md={6} lg={4} >
 
-            <React.Fragment key={targetIdentifier}>
-                <Card color="#fff" className={`stock ${classes.root} ${targetIdentifier}`}
-                        key={targetIdentifier}
+
+        return (
+        <Grid item xs={12} sm={12} md={6} lg={4}>
+
+            <React.Fragment>
+                <Card className={`stock ${classes.root} ${targetIdentifier}`}
                         onClick={toggleDrawer(targetIdentifier, true)}
                         onKeyDown={toggleDrawer(targetIdentifier, true)} >
                 
                     <CardContent className={`${changeClass} stock_inner`}>
 
-                        <Typography className="stock__exchange" variant="p" component="p">
+                        <Typography className="stock__exchange"  component="span">
                             {exchange}
                         </Typography>
                         
-                        <Typography className="stock__name" variant="p" component="p">
+                        <Typography className="stock__name" component="span">
                             {name}
                         </Typography>
 
-                        <Typography className="stock__symbol" color="#fff" gutterBottom variant="h3" component="div"> 
+                        <Typography className="stock__symbol" gutterBottom variant="h3" component="div"> 
                             {symbol}
                         </Typography>
 
-                        <Typography className="stock__price" variant="h5" component="p" title={currency}>
+                        <Typography className="stock__price" variant="h5" component="span" title={currency}>
                             {formatter.format(parseFloat(price))}       {changeElement}
                         </Typography>
 
@@ -101,15 +105,15 @@ function Stock({symbol, exchange, name, price, change, currency, details}) {
                 </Card>
 
                 <SwipeableDrawer
-                className="stock__drawer__container"
-                anchor="bottom"
-                open={state[targetIdentifier]}
-                onClose={toggleDrawer(targetIdentifier, false)}
-                onOpen={toggleDrawer(targetIdentifier, true)} >
+                  className="stock__drawer__container"
+                  anchor="bottom"
+                  open={state[targetIdentifier]}
+                  onClose={toggleDrawer(targetIdentifier, false)}
+                  onOpen={toggleDrawer(targetIdentifier, true)} >
            
                 <StockDrawer 
-                 details={details}
-                 changeElement={changeElement}
+                  details={details}
+                  changeElement={changeElement}
                 />
 
             </SwipeableDrawer>

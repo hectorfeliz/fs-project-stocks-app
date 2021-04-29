@@ -18,16 +18,21 @@ const useStyles = makeStyles((theme) => ([theme]));
 
 function SearchResults() {
 
-    const classes = useStyles();
+    //const classes = useStyles();
     const dispatch = useDispatch();
 
     const results = useSelector(state =>  state.results);
  
 
     if(!results.length){
+        console.log('>>>>>>>>>>>>>>>>>>>replaced results');
+        console.log(results);
         const persistedState = loadState();
         if(persistedState) {
             if(persistedState.results){
+              saveState(persistedState);
+              console.log('********************replaced results');
+              console.log(persistedState);
               dispatch(replaceResults(persistedState.results));
             }
         }
@@ -40,7 +45,7 @@ function SearchResults() {
     }
 
     return (
-        <Card className={`${classes.root} stock_list`} >
+        <Card className={`stock_list`} >
 
                 <CardHeader className="stock_list__header" 
                     title="Search Results">
@@ -60,6 +65,7 @@ function SearchResults() {
                       results.map((stock) => {
                         return(
                             <Stock 
+                            key={`search:${stock.symbol}:${stock.exchange}`}
                             symbol={stock.symbol}
                             name={stock.name}
                             exchange={stock.exchange}

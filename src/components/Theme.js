@@ -10,15 +10,15 @@ const theme = createMuiTheme({
     primary: {
       main: '#0d6ce0',
       light: '#1A3453',
-      dark: '#0d6ce0',
+      dark: '#0d6ce0'
     },
     secondary: {
-      main: '#ffffff',
+      main: '#ffffff'
     },
     positive:{
       main: "#00D100",
       light: '#00D100',
-      dark: '#00D100',
+      dark: '#00D100'
     },
     negative:{
       main: "#FF0000",
@@ -33,7 +33,7 @@ const theme = createMuiTheme({
     MuiAppBar: {
       colorInherit: {
         backgroundColor: '#1D132D',
-        color: '#fff',
+        color: '#FFFFFF',
       },
     },
   },

@@ -14,8 +14,6 @@ app.use(cors());
 
 const path = require('path')
 
-
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -28,14 +26,13 @@ app.use('/api/quote', quoteRouter);
 
 
   // server.js at the very end of the file.
-  if (process.env.NODE_ENV === 'production') {
+//if (process.env.NODE_ENV === 'production') {
     app.use(express.static('./build'));
     // only add this part if you are using React Router
-    app.get('*', (req,res) =>{
-        console.log(path.join(__dirname+'/build/index.html'));
+    app.get('/', (req,res) =>{
         res.sendFile(path.join(__dirname+'/build/index.html'));
     });
-}
+//}
 
 mongoose.connect(uri,
     {

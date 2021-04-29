@@ -26,6 +26,9 @@ import TextField from '@material-ui/core/TextField';
 // clean
 
 
+import HoldingsStock from './HoldingsStock';
+
+
 import AddTransaction from './AddTransaction';
 
 import '../css/StockDrawer.css';
@@ -35,24 +38,26 @@ var formatter = new Intl.NumberFormat('en-US', {
     currency: 'USD',
   });
 
+
+
 function StockDrawer({details, changeElement}) {
   
 
     return (
-        <div className="drawer" color="#fff">
+        <div className="drawer" >
             <Container className="drawer__inner">
 
             <Grid container spacing={3} className="drawer__header">
                         
 
             <Grid item md={6} xs={12}>
-                        <Typography className="stock__name" variant="p" component="p">{details.name}</Typography>
-                        <Typography className="stock__symbol" color="#fff" gutterBottom variant="h3" component="div"> {details.symbol}</Typography>
+                        <Typography className="stock__name" component="span">{details.name}</Typography>
+                        <Typography className="stock__symbol" gutterBottom variant="h3" component="div"> {details.symbol}</Typography>
 
-                        <Typography className="stock__price" variant="h5" component="p" title={details.currency}>
+                        <Typography className="stock__price" variant="h5" component="span" title={details.currency}>
                             {formatter.format(parseFloat(details.close))}   {changeElement}
                         </Typography>   
-                        <Typography className="stock__date" variant="h6" component="p" title={details.currency}>
+                        <Typography className="stock__date" variant="h6" component="span" title={details.currency}>
                              As of {details.datetime}    
                         </Typography>
             </Grid>
@@ -79,11 +84,7 @@ function StockDrawer({details, changeElement}) {
 
 
                 <Paper className="drawer__details paper">
-
-
-                
-
-
+                <HoldingsStock details={details} />
                 </Paper>
                 
 
@@ -99,7 +100,7 @@ function StockDrawer({details, changeElement}) {
 
                 <List className="" md={12} xs={12}>
 
-                    <Grid container md={12} >
+                    <Grid container >
 
                         <Grid item md={6} xs={12}>
                                 <ListItem>
@@ -171,9 +172,7 @@ function StockDrawer({details, changeElement}) {
 
                 </Paper>
           
-                <div className="drawer__actions">
-
-                </div>
+            
 
                 
             </Container>

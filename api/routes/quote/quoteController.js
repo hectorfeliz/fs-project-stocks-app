@@ -1,4 +1,5 @@
 const fetch = require('node-fetch');
+const config = require('../../config');
 
 exports.getQuote = async (query) => {
 try {
@@ -6,7 +7,7 @@ try {
   const options = {
     method: 'GET',
     headers: {
-      'x-rapidapi-key': process.env.RAPID_API_KEY,
+      'x-rapidapi-key': config.RAPID_API_KEY,
       'x-rapidapi-host': 'twelve-data1.p.rapidapi.com',
       useQueryString: true
     }
