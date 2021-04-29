@@ -45,7 +45,7 @@ export default function AddTransaction({symbol, exchange, stockPrice, currency})
         console.log('handle submit....');
         console.log(persistedState);
     
-        if(portfolio) {
+        if(portfolio.transactions) {
           setportfolioExists(true);
         }else{
           setportfolioExists(false);
