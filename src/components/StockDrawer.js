@@ -1,5 +1,5 @@
 import React from "react";
-
+import { useAuth0, withAuth0 } from "@auth0/auth0-react";
 // clean up
 
 import {
@@ -25,7 +25,7 @@ import {
   IconButton,
 } from "@material-ui/core";
 
-import CloseIcon from '@material-ui/icons/Close';
+import CloseIcon from "@material-ui/icons/Close";
 
 // clean
 
@@ -39,9 +39,10 @@ var formatter = new Intl.NumberFormat("en-US", {
 });
 
 function StockDrawer({ details, changeElement }) {
+  const { isAuthenticated } = useAuth0();
+
   return (
     <div className="drawer">
-
       <Container className="drawer__inner">
         <Grid container spacing={3} className="drawer__header">
           <Grid item md={12} xs={12}>
@@ -77,6 +78,7 @@ function StockDrawer({ details, changeElement }) {
           </Grid>
 
           <Grid item md={12} xs={12}>
+            {isAuthenticated && (
             <AddTransaction
               exchange={details.exchange}
               symbol={details.symbol}
@@ -84,9 +86,27 @@ function StockDrawer({ details, changeElement }) {
               currency={details.currency}
               close={details.close}
             />
+            )}
+
+
+            {!isAuthenticated && (
+           
+             <Paper className="drawer__details paper">
+            <Typography
+              variant="h6"
+              component="span"
+              gutterBottom
+              className="drawer__details__header"
+            >
+              Please log in to add a transaction
+            </Typography>
+
+             </Paper>  
+            
+
+            )}
           </Grid>
         </Grid>
-
 
         <Typography
           variant="h6"

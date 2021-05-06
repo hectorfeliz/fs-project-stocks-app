@@ -60,7 +60,7 @@ export default function Search({classes, props})  {
             <InputBase
               onChange={e => onChangeHandler(e)}
               onKeyDown={handleKeyDown}
-              placeholder="Search for stocks, index funds and cryptocurrencies…"
+              placeholder="Search for stocks and index funds"
               classes={classes}
               inputProps={{ 'aria-label': 'search' }}
             />

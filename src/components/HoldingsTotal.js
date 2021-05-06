@@ -3,7 +3,8 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { replacePortfolio } from "../actions";
-import getQuoteDetails from "./StockDetails";
+import getCurrentPrice from "./getCurrentPrice";
+import { useAuth0 } from '@auth0/auth0-react';
 
 import {
   Card,
@@ -54,41 +55,37 @@ function HoldingsTotal() {
   const [holdingsWithQuotes, setHoldingsWithQuotes] = useState(undefined);
   const [holdingSymbols, setHoldingSymbols] = useState(undefined);
 
-  const getStockDetails = async (symbols) => {
+  const {
+    isLoading,
+    isAuthenticated,
+  } = useAuth0();
 
-    const promises = symbols.map(async (stock) => {
 
-        const response = await fetch('/api/quote?symbol='+stock.symbol+':'+stock.exchange, {
-          method: 'GET'
-        });
+  const getStockDetails = async () => {
+
+      for (let key in holdingSymbols) {
+        let stockRefresh = await getCurrentPrice(holdingSymbols[key]);
+        holdingSymbols[key].quote = stockRefresh.close;
+      }
+
+      console.log('*************', holdingSymbols);
+
+      setHoldingsWithQuotes(holdingSymbols);
     
-        const resp = await response.json();
-    
-        if(resp.hasOwnProperty('symbol') && resp) return resp;
-      
-      });
-      
-
-
-      
-   return await Promise.all(promises);
-
-};
-
+  };
 
   useEffect(() => {
-  if (holdingSymbols) {
-    setHoldingsWithQuotes(getStockDetails(holdingSymbols));
-    }   
-  }, []);
+ 
+    getStockDetails();
 
-  let shares = 0,
-    spent = 0,
+  }, [portfolio]);
+
+  let totalShares = 0,
+    totalSpent = 0,
     total = 0;
 
 
   if (typeof portfolio !== "undefined") {
-      
     const foundTotalPortofolio = Object.assign(
       {},
       {
@@ -97,10 +94,7 @@ function HoldingsTotal() {
       }
     );
 
-    // @todo add this to the portfolio reducer
-
     const holdings = foundTotalPortofolio.transactions;
-
 
     let holdingMerged = [];
 
@@ -110,45 +104,32 @@ function HoldingsTotal() {
 
         if (typeof holdingMerged[key] == "undefined") {
           holdingMerged[key] = {
+            symbol: item.symbol,
+            exchange: item.exchange,
             quantity: item.quantity,
             price: item.price,
+            spent: item.price * item.quantity
           };
         } else {
-            holdingMerged[key].symbol = item.symbol;
-            holdingMerged[key].exchange = item.exchange;
-            holdingMerged[key].price += item.price;
-            holdingMerged[key].quantity += item.quantity;
+   
+          holdingMerged[key].price += item.price;
+          holdingMerged[key].spent += item.price * item.quantity;
+          holdingMerged[key].quantity += item.quantity;
+
         }
 
-        spent += item.price * item.quantity;
-        total += item.price * item.quantity;
+        totalSpent += item.price * item.quantity;
+     
       }
 
 
-      if(!holdingSymbols) setHoldingSymbols(holdingMerged);
+  
+     
+      if (!holdingSymbols) setHoldingSymbols(holdingMerged);
 
-      const totalReturn = 0;
-      const totalReturnPercentage = 0;
+     
 
-
-      if (Math.sign(totalReturn) !== 0) {
-        const changeElement =
-          Math.sign(totalReturn) == 1 ? (
-            <Avatar className="stock__change__icon positive">
-              <ArrowUpwardIcon />
-            </Avatar>
-          ) : (
-            <Avatar className="stock__change__icon negative">
-              <ArrowDownwardIcon />
-            </Avatar>
-          );
-      }else{
-        const changeElement = (
-            <Avatar className="stock__change__icon neutral">
-              <RemoveIcon />
-            </Avatar>
-          );
-      }
+      
 
       holdings.sort((a, b) =>
         a.quantity * a.price > b.quantity * b.price
@@ -158,24 +139,93 @@ function HoldingsTotal() {
           : 0
       );
 
+     
+
+
+      if (!holdingsWithQuotes && portfolio) {
 
 
 
+        return (
+          <React.Fragment>
+          <Card className="stock_holdings__details">
+            <CardHeader
+              className="drawer__details__header"
+              title="Your Portfolio"
+              subheader="Calculating"
 
-    if(holdingsWithQuotes){
+            ></CardHeader>
+                     </Card>
+          </React.Fragment>
+        );
+      }
+
+      if (holdingsWithQuotes) {
+
+        console.log('---------------> processing holdings with quotes');
+        console.log(holdingsWithQuotes);
 
 
- 
-        return(
-            <React.Fragment>
+        let totalReturn = 0
+        let totalReturnPercentage = 0;
+
+
+
+        for (let key in holdingsWithQuotes) {
+  
+          let item = holdingsWithQuotes[key];
+          console.log('analysinz', item);
+  
+          totalReturn += (item.quantity * parseFloat(item.quote) - item.spent);
+          total += parseFloat(item.quote) * item.quantity;
+
+
+        }
+
+
+        console.log('calculating percentage', totalReturn, total);
+        totalReturnPercentage = ((totalReturn / total ) * 100).toFixed(2);
+  
+  
+        console.log("holdings with quotes");
+        console.log(holdingsWithQuotes);
+        console.log('total return is', totalReturn);
+
+        let changeElement = '';
+
+        if (Math.sign(totalReturn) !== 0) {
+          changeElement  =
+            Math.sign(totalReturn) == 1 ? (
+              <Avatar className="stock__change__icon positive">
+                <ArrowUpwardIcon />
+              </Avatar>
+            ) : (
+              <Avatar className="stock__change__icon negative">
+                <ArrowDownwardIcon />
+              </Avatar>
+            );
+        } else {
+          changeElement = (
+            <Avatar className="stock__change__icon neutral">
+              <RemoveIcon />
+            </Avatar>
+          );
+        }
+
+      
+        return (
+
+
+          
+          <React.Fragment>
             <Card className="stock_holdings__details">
               <CardHeader
                 className="drawer__details__header"
                 title="Your Portfolio"
               ></CardHeader>
-      
+
               <Paper>
-                <CardContent className="stock_holdings__details drawer__details paper">
+                <CardContent className=" drawer__details paper">
                   <List>
                     <ListItem>
                       <ListItemAvatar>
@@ -184,11 +234,11 @@ function HoldingsTotal() {
                         </Avatar>
                       </ListItemAvatar>
                       <ListItemText
-                        primary={formatter.format(spent.toFixed(2))}
+                        primary={formatter.format(totalSpent.toFixed(2))}
                         secondary="Total invested"
                       />
                     </ListItem>
-      
+
                     <ListItem>
                       <ListItemAvatar>
                         <Avatar className="stock__summary__icon total">
@@ -201,9 +251,9 @@ function HoldingsTotal() {
                         secondary="Total value"
                       />
                     </ListItem>
-      
+
                     <ListItem>
-                      <ListItemAvatar></ListItemAvatar>
+                    <ListItemAvatar>{changeElement}</ListItemAvatar>
                       <ListItemText
                         component="h2"
                         primary={`${formatter.format(
@@ -217,29 +267,12 @@ function HoldingsTotal() {
               </Paper>
             </Card>
           </React.Fragment>
-    
-        )
-    
-    
+        );
       }
-
-
     }
-
-
-
-
-
-
-
-
-
   }
 
   return null;
-
-
-
 }
 
 export default HoldingsTotal;

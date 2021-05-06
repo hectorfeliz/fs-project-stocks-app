@@ -30,40 +30,37 @@ router.route("/").post(async (req, res) => {
 });
 
 
-// add transactions
-router.route("/transaction").post(async (req, res) => {
-
-  const transaction = req.body;
-  const user = req.user;
-
-  try {
-    
-    const portfolioSend = await addTransaction({ user, transaction });
-    console.log('transaction sent to controller');
-    res.status(201).json(portfolioSend);
-
-  } catch (err) {
-
-    console.log(err);
-    res.status(500).json({ message: "internal server error" });
-
-  }
-});
-
-
 
 // GET PORTFOLIO BY USERID
 router.route("/").get(async (req, res) => {
   const user = req.user;
-  
   try {
-    const portfolioByUser = await findPortfolioByUser(user);
-    res.json(portfolioByUser);
+    console.log('attempting to find portfolio by user');
+    const portfolioByUser = await findPortfolioByUser({user});
+    res.status(200).json(portfolioByUser);
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: "internal server error" });
   }
 
+});
+
+
+
+// add transactions
+router.route("/transaction").post(async (req, res) => {
+  const transaction = req.body;
+  const user = req.user;
+  try {
+    const portfolioSend = await addTransaction({ user, transaction });
+    console.log('transaction sent to controller');
+    res.status(201).json(portfolioSend);
+  } catch (err) {
+
+    console.log(err);
+    res.status(500).json({ message: "internal server error" });
+
+  }
 });
 
 

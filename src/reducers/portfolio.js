@@ -10,7 +10,7 @@ const portfolioReducer = (state = [], action) => {
                   portfolio: {
                     transactions: [].concat(action.payload.transactions)
                   }
-                  
+                
                 },
               );
             }

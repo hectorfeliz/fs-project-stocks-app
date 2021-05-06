@@ -2,6 +2,10 @@
   font-size: 14px;
 }
 
+.stock_holdings__details {
+  margin-top: 50px;
+}
+
 .stock_holdings__details .MuiButton-label {
   color: rgba(0, 0, 0, 0.87);
 }
