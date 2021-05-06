@@ -21,9 +21,11 @@ app.use(express.json());
 const searchRouter = require('./routes/search/searchRoutes');
 const quoteRouter = require('./routes/quote/quoteRoutes');
 
+const portfolioRouter = require('./routes/portfolio/portfolioRoutes');
+
 app.use('/api/search', searchRouter);
 app.use('/api/quote', quoteRouter);
-
+app.use('/api/portfolio', portfolioRouter);
 
   // server.js at the very end of the file.
 //if (process.env.NODE_ENV === 'production') {

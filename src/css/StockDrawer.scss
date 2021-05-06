@@ -1,21 +1,33 @@
 @import 'Variables';
 
+
 .stock__drawer__container{
 
+
+    .stock__drawer__header{
+        background-color: #f6f6f6;
+
+        .stock__drawer__header__title{
+            float: left;
+            margin: 8px 0 0 0;
+        }
+        .MuiIconButton-root{
+
+            float: right;
+        }
+
+    }
     .drawer{
         background-color: $white;
-        border-top: 10px solid $secondary;
+        border-top: 1px solid $secondary;
 
         .drawer__inner{
-            padding-top: 30px;
-            min-height: calc(100vh - 74px);
+        
+            min-height: 100vh;
 
 
         
-            *{
-                color: $primary;
-            }
-
+        
             .drawer__header{
 
                 padding: 20px 0;

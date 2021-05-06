@@ -4,8 +4,7 @@ import InputBase from '@material-ui/core/InputBase';
 import { useDispatch } from 'react-redux';
 import getQuoteDetails from './StockDetails';
 import {replaceResults} from '../actions';
-import saveState from '../local_storage/save';
-import loadState from '../local_storage/load';
+
 
 export default function Search({classes, props})  {
 
@@ -27,8 +26,6 @@ export default function Search({classes, props})  {
       return ((symbol.currency === 'USD' || symbol.currency === 'CAD') && (symbol.instrument_type === 'Digital Currency' || symbol.country === 'United States' || symbol.country === 'Canada'));
     });
   
-
-
     // Fetching Stock Quote Data
 
    let stockQuotes = await getQuoteDetails(stocks);
@@ -37,11 +34,7 @@ export default function Search({classes, props})  {
       return element !== undefined;
     });
 
-    const persistedState = loadState() || [];
-
-    persistedState.results = stockQuotes;
-
-    saveState(persistedState);
+ 
     dispatch(replaceResults(stockQuotes));
  
 

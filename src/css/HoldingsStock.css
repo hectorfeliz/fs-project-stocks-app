@@ -1,0 +1,37 @@
+.stock_holdings__tablehead th {
+  font-size: 14px;
+}
+
+.stock_holdings__details .MuiButton-label {
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.stock_holdings__details .MuiAvatar-root {
+  background-color: #1D132D;
+  color: white;
+}
+
+.stock_holdings__details .MuiListItemText-primary {
+  font-size: 20px;
+}
+
+.stock_holdings__details .stock__change__icon.negative {
+  background-color: #FF0000;
+}
+
+.stock_holdings__details .stock__change__icon.positive {
+  background-color: #00D100;
+}
+
+.stock_holdings__details td small {
+  float: right;
+}
+
+.stock_holdings__details td.return {
+  font-weight: bold;
+}
+
+.stock_holdings__totals {
+  margin-top: 40px;
+}
+/*# sourceMappingURL=HoldingsStock.css.map */

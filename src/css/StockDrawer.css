@@ -12,18 +12,26 @@ body .paper .MuiList-padding {
   padding: 0;
 }
 
+.stock__drawer__container .stock__drawer__header {
+  background-color: #f6f6f6;
+}
+
+.stock__drawer__container .stock__drawer__header .stock__drawer__header__title {
+  float: left;
+  margin: 8px 0 0 0;
+}
+
+.stock__drawer__container .stock__drawer__header .MuiIconButton-root {
+  float: right;
+}
+
 .stock__drawer__container .drawer {
   background-color: #f6f6f6;
-  border-top: 10px solid #1A3453;
+  border-top: 1px solid #1A3453;
 }
 
 .stock__drawer__container .drawer .drawer__inner {
-  padding-top: 30px;
-  min-height: calc(100vh - 74px);
-}
-
-.stock__drawer__container .drawer .drawer__inner * {
-  color: #1D132D;
+  min-height: 100vh;
 }
 
 .stock__drawer__container .drawer .drawer__inner .drawer__header {

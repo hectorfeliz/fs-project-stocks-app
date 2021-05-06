@@ -1,0 +1,97 @@
+   .stock_holdings__tablehead{
+
+
+        th{
+            font-size: 14px;
+        }
+
+    }
+
+   
+
+    .stock_holdings__details{
+
+
+
+        .MuiButton-label{
+            color: rgba(0, 0, 0, 0.87);
+        }
+
+        .MuiAvatar-root{
+
+            background-color: #1D132D;
+            color: white;
+
+
+           
+
+        }
+
+        .MuiListItemText-primary{
+            font-size: 20px;
+        }
+
+        .stock__summary__icon{
+
+
+            &.shares{
+
+            }
+
+            &.average{
+
+
+            }
+
+            &.total{
+
+
+            }
+
+
+
+        }
+
+        .stock__change__icon{
+            &.negative{
+                background-color: #FF0000;
+            }
+            &.positive{
+                background-color: #00D100;
+            }
+        }
+
+
+
+        td{
+            small{
+                float: right;
+            }
+
+            &.return{
+                font-weight: bold;
+
+                &.neutral{
+
+                }
+                &.positive{
+
+                }
+                &.negative{
+
+                }
+            }
+        }
+
+    }
+
+
+
+    .stock_holdings__totals{
+
+
+        margin-top: 40px;
+
+    }
+
+

@@ -11,34 +11,17 @@ import { makeStyles } from '@material-ui/core/styles';
 import theme from '../components/Theme';
 import { useDispatch } from 'react-redux';
 import {replaceResults} from '../actions';
-import loadState from '../local_storage/load';
-import saveState from '../local_storage/save';
+
 
 const useStyles = makeStyles((theme) => ([theme]));
 
 function SearchResults() {
 
-    //const classes = useStyles();
-    const dispatch = useDispatch();
 
-    const results = useSelector(state =>  state.results);
+    const results = useSelector(state =>  state.results).results;
  
 
-    if(!results.length){
-        console.log('>>>>>>>>>>>>>>>>>>>replaced results');
-        console.log(results);
-        const persistedState = loadState();
-        if(persistedState) {
-            if(persistedState.results){
-              saveState(persistedState);
-              console.log('********************replaced results');
-              console.log(persistedState);
-              dispatch(replaceResults(persistedState.results));
-            }
-        }
-    }
-
-    if(!results.length){
+    if(typeof results == 'undefined'){
         return (
             <div></div>
         );

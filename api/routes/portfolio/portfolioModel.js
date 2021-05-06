@@ -10,10 +10,6 @@ const transactionSchema = new Schema({
         type: String,
         required: true,
     },
-    type: {
-        type: String,
-        required: true,
-    },
     quantity: {
         type: Number,
         required: true,
@@ -25,13 +21,13 @@ const transactionSchema = new Schema({
 });
 
 const portfolioSchema = new Schema({
-  user: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
+  userId: {
+    type: String,
+    required: true,
   },
   name: {
     type: String,
-    required: true,
+    required: false,
   },
   transactions: [transactionSchema],
   createdAt: {
@@ -46,4 +42,4 @@ const portfolioSchema = new Schema({
 
 
 
-module.exports = mongoose.model('Portfolio', portfolioSchema);
+module.exports = mongoose.model('portfolios', portfolioSchema);

@@ -1,6 +1,23 @@
+.stock__change{
+    font-size: 16px;
+    margin-left: 5px;
+    &.negative{
+        background-color: #FF0000;
+    }
+    &.positive{
+        background-color: #00D100;
+    }
+
+    .MuiChip-label, .MuiChip-label, .MuiChip-icon *{
+        color: white !important;
+    }
+}
+
 .stock{
     transition: background-color 0.3s ease-in-out;
     cursor: pointer;
+
+    
 
     &:hover, &:focus, &:active{
         .stock_inner{
@@ -20,14 +37,7 @@
             //border-color: #00D100;
         }
 
-        .stock__change{
-            &.negative{
-                background-color: #FF0000;
-            }
-            &.positive{
-                background-color: #00D100;
-            }
-        }
+       
 
         .stock__exchange{
 

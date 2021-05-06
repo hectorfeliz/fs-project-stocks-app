@@ -1,4 +1,5 @@
 const getQuoteDetails = (stocks) => {
+
     const promises = stocks.map(async (stock) => {
     
       const response = await fetch('/api/quote?symbol='+stock.symbol+':'+stock.exchange, {

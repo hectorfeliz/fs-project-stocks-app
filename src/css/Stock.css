@@ -1,3 +1,20 @@
+.stock__change {
+  font-size: 16px;
+  margin-left: 5px;
+}
+
+.stock__change.negative {
+  background-color: #FF0000;
+}
+
+.stock__change.positive {
+  background-color: #00D100;
+}
+
+.stock__change .MuiChip-label, .stock__change .MuiChip-label, .stock__change .MuiChip-icon * {
+  color: white !important;
+}
+
 .stock {
   -webkit-transition: background-color 0.3s ease-in-out;
   transition: background-color 0.3s ease-in-out;
@@ -14,14 +31,6 @@
   border: 2px solid #fff;
   -webkit-transition: border 0.6s ease-in-out;
   transition: border 0.6s ease-in-out;
-}
-
-.stock .stock_inner .stock__change.negative {
-  background-color: #FF0000;
-}
-
-.stock .stock_inner .stock__change.positive {
-  background-color: #00D100;
 }
 
 .stock .stock_inner .stock__exchange {
