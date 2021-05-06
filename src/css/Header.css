@@ -107,4 +107,55 @@ body .paper .MuiList-padding {
 .header .login__container > span {
   margin-right: 15px;
 }
+
+@media (max-width: 960px) {
+  .header {
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    -ms-flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+            flex-direction: column;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-pack: center;
+    -webkit-box-pack: center;
+            justify-content: center;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    -ms-flex-align: center;
+    -webkit-box-align: center;
+            align-items: center;
+    padding: 10px 25% 10px 15px !important;
+  }
+  .header .login__container,
+  .header .search__container,
+  .header .logo__container {
+    margin: 5px 0;
+  }
+  .header .logo__container {
+    width: 100%;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+  .header .logo__container .makeStyles-title-3 {
+    display: block;
+    float: left;
+  }
+  .header .login__container {
+    margin: 0px;
+    width: 20%;
+    float: left;
+    -webkit-box-flex: unset;
+        -ms-flex: unset;
+            flex: unset;
+    position: absolute;
+    right: 0;
+  }
+  .header .login__container > span {
+    display: none;
+  }
+}
 /*# sourceMappingURL=Header.css.map */

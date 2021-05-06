@@ -6,6 +6,10 @@
 
     .stock__drawer__header{
         background-color: #f6f6f6;
+        padding: 16px 0;
+        .MuiContainer-fixed{
+            max-width: 100%;
+        }
 
         .stock__drawer__header__title{
             float: left;
@@ -127,7 +131,7 @@
 
             .drawer__details{
                 margin-top: 10px;
-                padding: 20px 10px;
+                padding: 10px 10px;
                 margin-bottom: 30px;
                 
                 .MuiDivider-root{

@@ -95,4 +95,68 @@
     button {
     }
   }
+
+
+  @media (max-width: 960px){
+
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-content: center;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    
+
+    padding: 10px 25% 10px 15px !important;
+
+
+    .login__container,
+    .search__container,
+    .logo__container{
+
+      margin: 5px 0;
+
+    }
+
+    .logo__container{
+      width: 100%;
+    justify-content: flex-start;
+
+
+      .makeStyles-title-3{
+        display:block;
+        float: left;
+      }
+
+    }
+
+    .login__container{
+      margin: 0px;
+      width: 20%;
+      float: left;
+      flex: unset;
+      position: absolute;
+      right: 0;
+
+      >span{
+        display: none;
+      }
+    }
+    
+
+  }
+
+
 }

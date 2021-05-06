@@ -1,6 +1,7 @@
 import "./css/normalize.css";
 import "./css/App.css";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Container from "@material-ui/core/Container";
@@ -16,8 +17,7 @@ import LoadPortfolio from "./components/LoadPortfolio";
 
 import WebFont from "webfontloader";
 import "./css/List.css";
-import { makeStyles } from "@material-ui/core/styles";
-import theme from "./components/Theme";
+
 
 WebFont.load({
   google: {
@@ -42,7 +42,9 @@ class StocksApp extends Component {
             <SearchResults />
             {isAuthenticated && <HoldingsTotal />}
             <PopularStocks />
+       
           </Container>
+          <Footer />
         </Router>
       </div>
     );

@@ -131,7 +131,7 @@ function Stock({ symbol, exchange, name, price, change, currency, details }) {
           onOpen={toggleDrawer(targetIdentifier, true)}
         >
           <DialogTitle disableTypography className="stock__drawer__header">
-            <Container spacing={3} fixed>
+            <Container >
               <Typography
                 variant="h5"
                 component="span"

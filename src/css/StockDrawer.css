@@ -14,6 +14,11 @@ body .paper .MuiList-padding {
 
 .stock__drawer__container .stock__drawer__header {
   background-color: #f6f6f6;
+  padding: 16px 0;
+}
+
+.stock__drawer__container .stock__drawer__header .MuiContainer-fixed {
+  max-width: 100%;
 }
 
 .stock__drawer__container .stock__drawer__header .stock__drawer__header__title {
@@ -121,7 +126,7 @@ body .paper .MuiList-padding {
 
 .stock__drawer__container .drawer .drawer__inner .drawer__details {
   margin-top: 10px;
-  padding: 20px 10px;
+  padding: 10px 10px;
   margin-bottom: 30px;
 }
 

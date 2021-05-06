@@ -1,0 +1,26 @@
+footer{
+
+    background-color: #000;
+    padding: 20px;
+    color: #fff;
+    text-align: center;
+
+    a{
+        color: #e4f0e2;
+        text-decoration: underline;
+    }
+
+    .footer_text{
+        margin: 20px 0;
+        font-size: 14px;
+
+
+
+        &.disclaimer{
+            font-style: italic;
+            font-size: 12px;
+        }
+
+    }
+
+}
