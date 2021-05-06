@@ -182,7 +182,7 @@ export default function Header() {
                   <Avatar alt="Remy Sharp" src={user.picture} />
                 </IconButton>
               )}
-            </div>
+
 
             {isAuthenticated && !isLoading && (
               <Menu
@@ -198,8 +198,15 @@ export default function Header() {
                 <LogoutButton/>
               </Menu>
             )}
+            
 
             {!isAuthenticated && !isLoading && <LoginButton />}
+
+
+
+            </div>
+
+        
 
         
           </Toolbar>
