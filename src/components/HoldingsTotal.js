@@ -68,8 +68,6 @@ function HoldingsTotal() {
         holdingSymbols[key].quote = stockRefresh.close;
       }
 
-      console.log('*************', holdingSymbols);
-
       setHoldingsWithQuotes(holdingSymbols);
     
   };
@@ -162,19 +160,16 @@ function HoldingsTotal() {
 
       if (holdingsWithQuotes) {
 
-        console.log('---------------> processing holdings with quotes');
-        console.log(holdingsWithQuotes);
 
 
         let totalReturn = 0
         let totalReturnPercentage = 0;
 
 
-
         for (let key in holdingsWithQuotes) {
   
           let item = holdingsWithQuotes[key];
-          console.log('analysinz', item);
+  
   
           totalReturn += (item.quantity * parseFloat(item.quote) - item.spent);
           total += parseFloat(item.quote) * item.quantity;
@@ -183,13 +178,8 @@ function HoldingsTotal() {
         }
 
 
-        console.log('calculating percentage', totalReturn, total);
-        totalReturnPercentage = ((totalReturn / total ) * 100).toFixed(2);
-  
-  
-        console.log("holdings with quotes");
-        console.log(holdingsWithQuotes);
-        console.log('total return is', totalReturn);
+        totalReturnPercentage = ((total / totalReturn ) * 100).toFixed(2);
+
 
         let changeElement = '';
 
