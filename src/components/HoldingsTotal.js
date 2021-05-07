@@ -65,7 +65,7 @@ function HoldingsTotal() {
 
       for (let key in holdingSymbols) {
         let stockRefresh = await getCurrentPrice(holdingSymbols[key]);
-        holdingSymbols[key].quote = stockRefresh.close;
+        holdingSymbols[key].quote = parseFloat(stockRefresh.close).toFixed(2);
       }
 
       setHoldingsWithQuotes(holdingSymbols);
@@ -171,8 +171,8 @@ function HoldingsTotal() {
           let item = holdingsWithQuotes[key];
   
   
-          totalReturn += (item.quantity * parseFloat(item.quote) - item.spent);
-          total += parseFloat(item.quote) * item.quantity;
+          totalReturn += (item.quantity * item.quote - item.spent);
+          total += item.quote * item.quantity;
 
 
         }
