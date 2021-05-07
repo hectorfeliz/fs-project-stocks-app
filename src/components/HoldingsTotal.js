@@ -178,7 +178,7 @@ function HoldingsTotal() {
         }
 
 
-        totalReturnPercentage = ((total / totalReturn ) * 100).toFixed(2);
+        totalReturnPercentage = ((total / totalSpent ) * 100).toFixed(2);
 
 
         let changeElement = '';
